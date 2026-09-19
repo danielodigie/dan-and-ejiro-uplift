@@ -1,0 +1,7 @@
+# Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+
+# Temp / OS
+.DS_Store
