@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dan and Ejiro Uplift — Design Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FDF8F1; --sand:#F3EAD9; --ink:#2B2620; --muted:#7A6F63;
+    --amber:#D9822B; --amber-dark:#B4651A; --sage:#5F7E6B; --sage-soft:#E4EBE4;
+    --card:#FFFFFF; --line:#E9DFD0; --radius:22px;
+    --shadow:0 10px 30px rgba(43,38,32,.08);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--cream);color:var(--ink);font-family:"Nunito Sans",system-ui,sans-serif;line-height:1.6}
+  header{padding:48px 24px 8px;max-width:960px;margin:0 auto}
+  header .eyebrow{letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--amber-dark);font-weight:700}
+  h1{font-family:Fraunces,serif;font-size:clamp(32px,5vw,52px);line-height:1.05;margin:.3em 0}
+  header p{color:var(--muted);max-width:640px}
+  main{max-width:960px;margin:0 auto;padding:24px;display:grid;gap:24px}
+  section{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:28px}
+  section h2{font-family:Fraunces,serif;margin:0 0 6px;font-size:26px}
+  section p.sub{color:var(--muted);margin:0 0 18px}
+  .swatches{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+  .swatch{border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .swatch .c{height:72px}
+  .swatch .t{padding:10px 12px;font-size:13px}
+  .swatch .t b{display:block}
+  .type-ui{font-family:"Nunito Sans",sans-serif}
+  .type-serif{font-family:Fraunces,serif}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:999px;padding:14px 22px;font-weight:700;border:1px solid transparent;cursor:pointer;font-size:15px;transition:transform .2s ease, box-shadow .2s ease, background .2s}
+  .btn:active{transform:scale(.98)}
+  .btn-primary{background:var(--amber);color:#fff;box-shadow:0 8px 20px rgba(217,130,43,.35)}
+  .btn-primary:hover{background:var(--amber-dark)}
+  .btn-secondary{background:var(--sage);color:#fff}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn-row{display:flex;flex-wrap:wrap;gap:12px}
+  label.lbl{display:block;font-weight:700;margin:14px 0 6px;font-size:14px}
+  input[type=text],textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:14px;font-size:15px;font-family:inherit;background:#FFFEFB}
+  input[type=text]:focus,textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 4px rgba(217,130,43,.15)}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+  .chip{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;font-weight:600;cursor:pointer}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .uplift{background:linear-gradient(180deg,#FFFDF8,var(--sand));border:1px solid var(--line);border-radius:var(--radius);padding:28px;box-shadow:var(--shadow)}
+  .uplift .greet{color:var(--amber-dark);font-weight:700}
+  .uplift .msg{font-family:Fraunces,serif;font-size:24px;line-height:1.4;margin:10px 0 16px}
+  .uplift .action{background:var(--sage-soft);border-radius:14px;padding:12px 14px;font-size:14px}
+  footer{max-width:960px;margin:0 auto;padding:8px 24px 48px;color:var(--muted);font-size:13px}
+</style>
+</head>
+<body>
+<header>
+  <div class="eyebrow">Dan and Ejiro Uplift • Design System v1</div>
+  <h1>A little encouragement can change your day.</h1>
+  <p>Warm, human, hopeful. Primary: sunrise amber. Secondary: calm sage. UI in Nunito Sans, messages in Fraunces serif. Cards: 22px radius, soft shadow, quiet motion.</p>
+</header>
+<main>
+  <section>
+    <h2>1. Colors</h2>
+    <p class="sub">Light-first, AA contrast, peaceful — never corporate or neon.</p>
+    <div class="swatches">
+      <div class="swatch"><div class="c" style="background:#D9822B"></div><div class="t"><b>Sunrise Amber</b>#D9822B • Primary CTA</div></div>
+      <div class="swatch"><div class="c" style="background:#5F7E6B"></div><div class="t"><b>Calm Sage</b>#5F7E6B • Secondary</div></div>
+      <div class="swatch"><div class="c" style="background:#FDF8F1"></div><div class="t"><b>Warm Cream</b>#FDF8F1 • Page bg</div></div>
+      <div class="swatch"><div class="c" style="background:#F3EAD9"></div><div class="t"><b>Soft Sand</b>#F3EAD9 • Card tint</div></div>
+      <div class="swatch"><div class="c" style="background:#2B2620"></div><div class="t" style="color:#fff"><b>Warm Ink</b>#2B2620 • Text</div></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>2. Typography</h2>
+    <p class="sub">UI: Nunito Sans 400/600/700. Message: Fraunces 500/600.</p>
+    <p class="type-serif" style="font-size:28px;margin:0">You don’t need to solve everything today.</p>
+    <p class="type-ui" style="margin:8px 0 0;color:var(--muted)">Body UI — Focus on the next step, do it well, and trust yourself enough to keep moving. Max 280 chars on card.</p>
+  </section>
+
+  <section>
+    <h2>3. Buttons</h2>
+    <p class="sub">Pill, 44pt+ target, gentle press — no bouncy gamification.</p>
+    <div class="btn-row">
+      <button class="btn btn-primary">I Need a Lift</button>
+      <button class="btn btn-secondary">I’m Ready</button>
+      <button class="btn btn-ghost">Request Another</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>4. Inputs</h2>
+    <p class="sub">Sample check-in + style preference (from PRD §6).</p>
+    <label class="lbl" for="name">What should we call you?</label>
+    <input id="name" type="text" placeholder="e.g. Daniel" />
+    <label class="lbl">How are you feeling right now?</label>
+    <div class="chips">
+      <button class="chip">😊 Great</button>
+      <button class="chip" aria-pressed="true">🙂 Good</button>
+      <button class="chip">😐 Okay</button>
+      <button class="chip">😔 Low</button>
+      <button class="chip">😣 Struggling</button>
+    </div>
+    <label class="lbl">How do you like to be encouraged?</label>
+    <div class="chips">
+      <button class="chip" aria-pressed="true">Gentle</button>
+      <button class="chip">Bold</button>
+      <button class="chip">Practical</button>
+      <button class="chip">Spiritual</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>5. Sample Uplift Card</h2>
+    <p class="sub">Home / Today’s Uplift — save, share, act.</p>
+    <div class="uplift">
+      <div class="greet">Good morning, Daniel.</div>
+      <div class="msg">You don’t need to solve everything today. Focus on the next step, do it well, and trust yourself enough to keep moving.</div>
+      <div class="action"><b>Today’s small action:</b> Apply for one opportunity before the end of the day.</div>
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn btn-primary">Save</button>
+        <button class="btn btn-ghost">Share</button>
+        <button class="btn btn-ghost">Reflect</button>
+      </div>
+    </div>
+  </section>
+</main>
+<footer>Dan and Ejiro Uplift • design.html preview • Open locally or via GitHub Pages. North Star: encouraged → strengthened → ready for next step.</footer>
+</body>
+</html>
