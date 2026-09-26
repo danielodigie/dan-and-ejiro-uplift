@@ -69,57 +69,71 @@ Home, I Need a Lift flow (intent → situation → message → action), Goals li
 ---
 ## Phase 2 — Architectural Decision (Week 2)
 
-Goal: one codebase, zero DevOps burden, ship iOS + Android + Web.
+Goal: one codebase, local-first for MVP, no Supabase, no Vercel. All runtime on your device except Cloudflare R2 for files.
 
-### Recommended stack (default)
-- **App:** Expo React Native + Expo Router + TypeScript. One codebase ships to iOS, Android, Web (PWA). Fastest for solo/small team, covers broad audience (§4).
-- **Backend:** Supabase (Postgres + Auth + Edge Functions + Storage + Realtime + Push via Expo). No server to manage. Row Level Security per user.
-- **Payments:** RevenueCat (wraps App Store / Play + Stripe for web) for Premium, Packs, Gifting.
-- **Notifications:** Expo Push + Supabase pg_cron for morning/midday/evening jobs.
-- **Analytics:** PostHog (product events + funnels for §34).
-- **Personalization v1:** deterministic rule engine in TypeScript (no LLM required). LLM optional in v1.1 for deeper variants behind feature flag.
-- **Hosting web:** Vercel (Expo web export) or EAS Hosting.
+### Agreed stack (per your decisions)
+- **App:** Expo React Native + Expo Router + TypeScript. Run locally via Expo Go + web via local Metro (`npx expo start`). Covers §4 audience without store deploys for MVP.
+- **Database:** Local PostgreSQL 16 on your device (DB `uplift`). Managed via Drizzle ORM + Drizzle Kit migrations. Backed up with `pg_dump` nightly to local folder (later to R2).
+- **Auth:** Better Auth (self-hosted) with Postgres adapter. Email+password in MVP, anonymous/guest option, OAuth (Google/Apple) later. Sessions in Postgres, no third-party auth server.
+- **Backend API:** Node.js + Hono (or Express) + TypeScript in `/apps/api`, running locally on `http://localhost:3000` (LAN: `http://<your-lan-ip>:3000` for phone testing). Owns: profiles, uplifts engine API, goals, journal, saves, streaks, entitlements, R2 presigned URLs, cron jobs.
+- **File storage:** Cloudflare R2 (S3-compatible) for share-card images, future audio, journal attachments. Backend generates presigned PUT/GET URLs; no public buckets in MVP.
+- **Hosting (MVP):** Local device only. Backend via `pnpm dev` (later PM2 as Windows service), Postgres as Windows service, Expo dev server on LAN. No Supabase, no Vercel in this phase. Cloud deploy deferred until post-MVP.
+- **Payments:** Stubbed locally in MVP (`entitlements.tier` flag toggled in Profile dev menu). RevenueCat / Stripe added only when you move off local hosting.
+- **Notifications:** `node-cron` in API for morning/midday/evening jobs + local scheduling in app. Expo Push deferred (requires cloud); for MVP use in-app + local notifications.
+- **Analytics:** Local `events` table in Postgres for §34 metrics (no PostHog cloud yet). Export CSV for review. Add PostHog later when hosted.
+- **Personalization v1:** deterministic rule engine in TypeScript (no LLM required). LLM optional in v1.1 behind flag.
 
-Why not native-first (Swift/Kotlin) or Next.js-only? Native doubles work; web-only misses habit + push + streak power essential to encouragement loop. Expo gives 80% native feel at 40% cost.
+Why this fits: full data ownership, zero cloud cost, works offline on LAN, easy to migrate later (Postgres is Postgres; R2 is S3-compatible; Better Auth travels with you).
 
-Alternative if web-first validation preferred: Next.js PWA + Supabase, then wrap with Capacitor. Only choose if you cannot do app store releases in MVP.
-
-### Monorepo structure (proposed)
+### Monorepo structure (local-first)
 ```
-/apps/mobile (expo)
+/apps/mobile (expo + expo-router, API_URL=http://<lan-ip>:3000)
+/apps/api (hono + better-auth + drizzle + pg + R2 client + node-cron)
 /packages/ui (design system components)
 /packages/content (seed messages, categories, actions)
 /packages/engine (personalization rules, streak, actions logic)
-/packages/api (supabase client, types)
-/supabase (migrations, edge functions: daily-uplift, timely-send)
+/packages/db (drizzle schema + migrations + seed)
 /docs
 ```
+No `/supabase` folder. Migrations live in `/packages/db/migrations`.
 
-### Data model (Postgres)
-- `users` (id, email, name, timezone, created_at)
+### Data model (local Postgres + Drizzle)
+Same tables as before, enforced in app layer (no RLS — trusted local API + Better Auth session):
+- `users` (id, email, name, timezone, created_at) — managed by Better Auth (`user`, `session`, `account`, `verification` tables + your `users` profile extension)
 - `profiles` (user_id FK, moods[], situations[], goals_focus[], styles[], faith_opt_in bool, notify_times jsonb, frequency)
 - `uplifts` (id, body, greeting_variant, category, moods[], situations[], styles[], faith bool, action_text, tone_score)
 - `checkins` (id, user_id, mood, note, created_at)
 - `goals` (id, user_id, title, category, why, target_date, status)
 - `goal_steps` (id, goal_id, action_text, done_at)
-- `saves` (user_id, uplift_id, collection), `likes` (user_id, uplift_id), `shares` (user_id, uplift_id, channel)
-- `journal_entries` (id, user_id, prompt, body, mood, gratitude[], victory bool, created_at)
+- `saves` (user_id, uplift_id, collection), `likes` (user_id, uplift_id), `shares` (user_id, uplift_id, channel, r2_key)
+- `journal_entries` (id, user_id, prompt, body, mood, gratitude[], victory bool, created_at, r2_keys[])
 - `streaks` (user_id, current_count, longest, last_seen_date, grace_used)
-- `entitlements` (user_id, tier free/premium, packs[], expires_at)
+- `entitlements` (user_id, tier free/premium-stub, packs[], expires_at)
+- `events` (id, user_id, name, props jsonb, created_at) — local analytics for §34
+- `files` (id, user_id, r2_key, purpose, mime, size, created_at) — R2 object registry
 
-RLS: users can only read/write own rows; `uplifts` read-only for all authenticated.
+Auth checks: every `/api/*` route requires Better Auth session; users can only access own `user_id` rows; `uplifts` read-only for signed-in users.
 
-### Core services
-- `selectUplift({mood, situation, goal, style, faith, history})` → filters by tags, excludes last 7 seen, prefers style match, falls back gracefully. Pure function, unit-testable.
-- `DailyJob` → generates Today's Uplift per timezone at 6-8am local, respects frequency caps (never annoying §13).
-- `StreakService` → increments on any meaningful open (not just streak screen), 1-day grace, message: "Start again. Keep going."
+### Local setup (Windows)
+1. Install PostgreSQL 16, create DB: `createdb uplift`, user `uplift` + password. Connection: `DATABASE_URL=postgres://uplift:<pw>@localhost:5432/uplift`
+2. Better Auth: `BETTER_AUTH_SECRET`, `BETTER_AUTH_URL=http://localhost:3000`, email/password enabled, Drizzle adapter to same DB.
+3. R2: bucket `uplift-files`, keys `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET`, `R2_PUBLIC_URL` (private; use presigned URLs, 15-min expiry).
+4. API `.env`: `DATABASE_URL`, `BETTER_AUTH_*`, `R2_*`, `API_PORT=3000`, `MOBILE_URL=http://<lan-ip>:8081`.
+5. Run: `pnpm --filter db migrate` → `pnpm --filter api dev` → `npx expo start --lan` in mobile. Phone + PC on same Wi-Fi.
+
+### Core services (local API)
+- `selectUplift({mood, situation, goal, style, faith, history})` → filters by tags, excludes last 7 seen, prefers style match, falls back gracefully. Pure function in `packages/engine`, unit-testable, called by API.
+- `DailyJob (node-cron)` → generates Today's Uplift per user at 6-8am local, respects frequency caps (never annoying §13). Runs in API process locally.
+- `StreakService` → increments on any meaningful open, 1-day grace, message: "Start again. Keep going."
 - `ActionService` → maps category → 1 small action (PRD §12 examples).
+- `StorageService (R2)` → `PUT /api/files/presign` returns presigned URL; mobile uploads direct to R2; API stores `files` row. Downloads via `GET /api/files/:id/url`.
+- `AuthService (Better Auth)` → sign-up/sign-in/sign-out/session, password reset locally; all API routes check `auth.api.getSession`.
 
 ### Deliverables
-- [ ] ADR-001: Expo + Supabase + RevenueCat (with alternatives rejected)
-- [ ] ERD + Supabase migrations v1
-- [ ] API contract + event schema for PostHog
-- [ ] Env strategy: dev / preview / prod, secrets in EAS + Supabase Vault
+- [ ] ADR-001 (revised): Expo + Local Postgres + Better Auth + R2 + Local hosting (Supabase/Vercel explicitly rejected per decision)
+- [ ] ERD + Drizzle schema + seed in `packages/db`
+- [ ] API contract (`/api/auth/*`, `/api/uplifts/today`, `/api/lift`, `/api/goals`, `/api/journal`, `/api/files/*`, `/api/events`) + local `events` schema for PostHog-equivalent funnels
+- [ ] Env strategy local-only: `.env` per app (gitignored), `.env.example` committed, secrets stay on device; nightly `pg_dump` backup script
 
 ---
 ## Phase 3 — Content Engine (Week 2-3, parallel with design)
@@ -163,17 +177,17 @@ Implement: paywall, restore, entitlements, 1 premium collection (e.g. Confidence
 ---
 ## Phase 6 — Quality, Safety, Analytics (Week 7-8)
 
-- Testing: unit (engine, streak), integration (jobs, RLS), E2E (Detox/Maestro for 3 journeys), visual (components).
-- Performance: cold start <2s, uplift render <500ms cached.
-- Privacy: delete account + export data, minimal PII, faith data treated as sensitive.
-- Analytics dashboard for §34: D1/D7/D30 retention, % meaningful (like/save/share per view), action completion rate, share rate, save revisit rate, free→paid conversion.
+- Testing: unit (engine, streak), integration (API auth via Better Auth, Drizzle, R2 presign mock), E2E (Detox/Maestro for 3 journeys), visual (components).
+- Performance: cold start <2s, uplift render <500ms cached, API p95 <200ms on localhost.
+- Privacy: local-first — data stays on your device + R2 files; delete account + export data, minimal PII, faith data treated as sensitive. Backups encrypted.
+- Analytics dashboard (local): query `events` table for §34: D1/D7/D30 retention, % meaningful (like/save/share per view), action completion rate, share rate, save revisit rate, free→paid-stub conversion.
 - Beta: 30-50 users (young adults, professionals, faith users), 2-week diary study: "Did it feel personal?"
 
 ---
 ## Phase 7 — Launch & Iterate (Week 8+)
 
-- Store listings using taglines: "A little encouragement can change your day." / "The right words. The right moment. Keep moving."
-- Launch checklist: push certs, pg_cron times, RevenueCat products, PostHog funnels, crisis resources, support email.
+- Local launch checklist: Postgres service running, API on :3000 reachable via LAN, Expo `--lan` tested on real phone, node-cron times correct, R2 presign works, premium-stub toggle works, crisis resources, support email. No store release required for MVP validation.
+- Post-MVP roadmap (in order): Encourage Someone builder → Stories → Community (encouragement not comparison, moderated) → Audio (stored in R2) → Packs/Gifting → Family/Org plans (§35). Cloud migration (hosted Postgres + hosted API) only when you outgrow local.
 - Post-MVP roadmap (in order): Encourage Someone builder → Stories → Community (encouragement not comparison, moderated) → Audio → Packs/Gifting → Family/Org plans (§35).
 
 ### Rough effort
@@ -188,4 +202,4 @@ Solo dev + AI assist: 8 weeks to TestFlight. Small team (1 dev + 1 designer): 5-
 
 ---
 ## Next step
-Approve stack (Expo + Supabase) and Figma direction, then start Phase 1 + 2 in parallel. I can scaffold `/apps/mobile` + Supabase migrations next.
+Stack locked (Expo + Local Postgres + Better Auth + R2 + Local hosting). Next: scaffold `/apps/mobile` + `/apps/api` + `/packages/db` with Drizzle + Better Auth wiring. I can do that next.
