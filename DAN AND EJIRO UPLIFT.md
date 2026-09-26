@@ -992,3 +992,14 @@ If the answer is yes, it belongs within the spirit of **Dan and Ejiro Uplift**.
 
 If it only creates engagement without creating meaningful value, it should be reconsidered.
 
+---
+
+# **39. Change Notes**
+
+## 2026-09-26 — Design palette update (design.html v2)
+- Changed design direction from warm muted tones to very bright, sharp, high-contrast palette per owner request.
+- New palette: white `#FFFFFF` background, sharp ink `#111111` text/borders, vivid orange `#FF4D00` (primary CTA), sharp blue `#0B5CFF` (secondary), bright yellow `#FFC400` (Uplift card), bright teal `#00C2A8` (success/action).
+- Removed all gradients — every surface is now a solid color.
+- Applied thick 3px black borders and hard offset shadows for sharpness; bold 700/800 type weights.
+- Preview updated in `design.html` (sections: colors, typography, buttons, inputs, sample Uplift card).
+
