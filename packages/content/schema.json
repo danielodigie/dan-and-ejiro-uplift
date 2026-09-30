@@ -2,17 +2,69 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "UpliftMessage",
   "type": "object",
-  "required": ["id", "body", "category", "moods", "situations", "styles", "action"],
+  "required": [
+    "id",
+    "body",
+    "category",
+    "moods",
+    "situations",
+    "styles",
+    "action"
+  ],
   "properties": {
-    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
-    "greetings": { "type": "array", "items": { "type": "string", "maxLength": 60 }, "minItems": 1, "maxItems": 3 },
-    "body": { "type": "string", "minLength": 40, "maxLength": 280 },
-    "action": { "type": "string", "minLength": 10, "maxLength": 140 },
-    "category": { "type": "string" },
-    "moods": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "situations": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "styles": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
-    "faith": { "type": "boolean", "default": false },
-    "scripture": { "type": "string" }
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "greetings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 60
+      },
+      "minItems": 1,
+      "maxItems": 3
+    },
+    "body": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 280
+    },
+    "action": {
+      "type": "string",
+      "minLength": 10,
+      "maxLength": 140
+    },
+    "category": {
+      "type": "string"
+    },
+    "moods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "situations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "styles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "faith": {
+      "type": "boolean",
+      "default": false
+    },
+    "scripture": {
+      "type": "string"
+    }
   }
 }
