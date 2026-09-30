@@ -5,3 +5,10 @@ ehthumbs.db
 
 # Temp / OS
 .DS_Store
+
+# Node / Expo / local env (Phase 4)
+node_modules/
+.expo/
+dist/
+.env
+*.log

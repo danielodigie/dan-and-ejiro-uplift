@@ -1,0 +1,12 @@
+{
+  "name": "@uplift/mobile",
+  "version": "0.1.0",
+  "main": "index.ts",
+  "scripts": { "start": "expo start --lan" },
+  "dependencies": {
+    "expo": "~51.0.0",
+    "expo-router": "~3.0.0",
+    "react": "18.2.0",
+    "react-native": "0.74.0"
+  }
+}

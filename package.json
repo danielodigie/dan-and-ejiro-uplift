@@ -1,0 +1,11 @@
+{
+  "name": "dan-and-ejiro-uplift",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@9.0.0",
+  "scripts": {
+    "dev:db": "pnpm --filter @uplift/db migrate",
+    "dev:api": "pnpm --filter @uplift/api dev",
+    "dev:mobile": "pnpm --filter @uplift/mobile start"
+  }
+}
