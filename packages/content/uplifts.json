@@ -1,0 +1,2850 @@
+﻿[
+    {
+        "id":  "hope-01",
+        "greetings":  [
+                          "Good morning.",
+                          "Hello, friend."
+                      ],
+        "body":  "Your current chapter is not your final story. Hope is still reasonable, even on a slow morning like this.",
+        "action":  "Write down one thing you still believe is possible.",
+        "category":  "hope",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "purpose",
+                           "failure"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "hope-02",
+        "greetings":  [
+                          "Take a breath.",
+                          "Hey, keep going."
+                      ],
+        "body":  "You have survived every hard day so far. That track record matters. Today can still hold something good.",
+        "action":  "Name one small light in today and sit with it for a minute.",
+        "category":  "hope",
+        "moods":  [
+                      "low",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "hope-03",
+        "greetings":  [
+                          "Good morning.",
+                          "A fresh start."
+                      ],
+        "body":  "Small beginnings count. Plant one hopeful step today and let tomorrow build on it.",
+        "action":  "Send a hopeful message to someone you trust.",
+        "category":  "hope",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "growth",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "hope-04",
+        "greetings":  [
+                          "Listen.",
+                          "You are seen."
+                      ],
+        "body":  "Feeling low does not mean you are failing. It means you are human and still in the fight.",
+        "action":  "Write down one thing you still believe is possible.",
+        "category":  "hope",
+        "moods":  [
+                      "low",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "purpose",
+                           "failure"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "hope-05",
+        "greetings":  [
+                          "Keep looking up.",
+                          "Morning light."
+                      ],
+        "body":  "Progress is often invisible before it is obvious. Stay with the process one more day.",
+        "action":  "Name one small light in today and sit with it for a minute.",
+        "category":  "hope",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "growth"
+                       ],
+        "styles":  [
+                       "motivational",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "hope-06",
+        "greetings":  [
+                          "Bold truth:",
+                          "Hear this."
+                      ],
+        "body":  "You are allowed to start again today. Yesterday\u0027s weight does not get the final vote.",
+        "action":  "Send a hopeful message to someone you trust.",
+        "category":  "hope",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "failure",
+                           "life-changes",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "bold",
+                       "direct",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-01",
+        "greetings":  [
+                          "Good morning.",
+                          "Stand tall."
+                      ],
+        "body":  "You do not need permission to believe in yourself. Your skills are real and they travel with you.",
+        "action":  "Write down three things you are good at.",
+        "category":  "confidence",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "career",
+                           "school"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-02",
+        "greetings":  [
+                          "Gentle reminder.",
+                          "Hey."
+                      ],
+        "body":  "Confidence grows by evidence, not hype. Look at one thing you handled well this week.",
+        "action":  "Stand tall, breathe deeply, and say one true strength out loud.",
+        "category":  "confidence",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "purpose",
+                           "growth"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-03",
+        "greetings":  [
+                          "Before you walk in.",
+                          "You belong there."
+                      ],
+        "body":  "You were invited, chosen, or earned your place. Walk in like the room needs what you carry.",
+        "action":  "Do one small thing you have been avoiding to prove you can.",
+        "category":  "confidence",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "career",
+                           "school",
+                           "business"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-04",
+        "greetings":  [
+                          "Quiet truth.",
+                          "Listen."
+                      ],
+        "body":  "Nervous does not mean unready. It means you care. Let care sharpen you, not stop you.",
+        "action":  "Write down three things you are good at.",
+        "category":  "confidence",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "school",
+                           "career"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-05",
+        "greetings":  [
+                          "Practical step.",
+                          "Today:"
+                      ],
+        "body":  "Pick one skill you want to trust more, then practice it for ten focused minutes today.",
+        "action":  "Do one small thing you have been avoiding to prove you can.",
+        "category":  "confidence",
+        "moods":  [
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "growth",
+                           "career",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "practical",
+                       "direct",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "conf-06",
+        "greetings":  [
+                          "Hey, friend.",
+                          "Remember."
+                      ],
+        "body":  "People already trust you more than you trust yourself. Borrow their view until yours catches up.",
+        "action":  "Stand tall, breathe deeply, and say one true strength out loud.",
+        "category":  "confidence",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "confidence",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "gentle",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-01",
+        "greetings":  [
+                          "Let\u0027s move.",
+                          "Morning fuel."
+                      ],
+        "body":  "You do not need to feel like it to start. Start small and let motion create motivation.",
+        "action":  "Spend 15 minutes on the task you keep postponing.",
+        "category":  "motivation",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "growth",
+                           "career",
+                           "school"
+                       ],
+        "styles":  [
+                       "bold",
+                       "practical",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-02",
+        "greetings":  [
+                          "Midday reset.",
+                          "Breathe."
+                      ],
+        "body":  "You are still moving forward even if today feels slow. One focused block can change the day.",
+        "action":  "Break today\u0027s goal into one 10-minute step and start it.",
+        "category":  "motivation",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "business",
+                           "career",
+                           "school"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-03",
+        "greetings":  [
+                          "Gentle push.",
+                          "Hey."
+                      ],
+        "body":  "Big goals are built from boring reps. Do today\u0027s rep well and trust the compound effect.",
+        "action":  "Spend 15 minutes on the task you keep postponing.",
+        "category":  "motivation",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "growth",
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "practical",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-04",
+        "greetings":  [
+                          "When tired.",
+                          "Rest, then rise."
+                      ],
+        "body":  "Tired is information, not identity. Rest briefly, then take one clear next step.",
+        "action":  "Clear one small space to clear your mind.",
+        "category":  "motivation",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "life-changes",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-05",
+        "greetings":  [
+                          "Direct word:",
+                          "No more waiting."
+                      ],
+        "body":  "Waiting for perfect conditions wastes good days. Use what you have, where you are, today.",
+        "action":  "Break today\u0027s goal into one 10-minute step and start it.",
+        "category":  "motivation",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "business",
+                           "career",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "bold",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mot-06",
+        "greetings":  [
+                          "Evening check.",
+                          "Well done."
+                      ],
+        "body":  "You showed up when quitting would have been easier. That counts more than you think.",
+        "action":  "Clear one small space to clear your mind.",
+        "category":  "motivation",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "reflective",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-01",
+        "greetings":  [
+                          "When heavy.",
+                          "You are held."
+                      ],
+        "body":  "You can do hard things and still need rest. Strength includes asking for support.",
+        "action":  "Ask one person for help instead of carrying it alone.",
+        "category":  "strength",
+        "moods":  [
+                      "low",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "family",
+                           "failure"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-02",
+        "greetings":  [
+                          "Take heart.",
+                          "Breathe deep."
+                      ],
+        "body":  "One breath, one step, one hour at a time. You do not have to carry the whole week today.",
+        "action":  "Take five slow breaths before your next decision.",
+        "category":  "strength",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "finances",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-03",
+        "greetings":  [
+                          "Bold reminder.",
+                          "You endure."
+                      ],
+        "body":  "You have handled 100% of your hardest days so far. Bring that same steadiness today.",
+        "action":  "Take five slow breaths before your next decision.",
+        "category":  "strength",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "career",
+                           "failure",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-04",
+        "greetings":  [
+                          "Permission slip:",
+                          "Rest counts."
+                      ],
+        "body":  "Recovery is productive. A rested mind solves what an exhausted one cannot.",
+        "action":  "Rest for 20 minutes without guilt â€” strength needs fuel.",
+        "category":  "strength",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "life-changes",
+                           "family"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-05",
+        "greetings":  [
+                          "Practical aid.",
+                          "Next step:"
+                      ],
+        "body":  "Shrink the problem to the next useful action. Strength loves clarity.",
+        "action":  "Ask one person for help instead of carrying it alone.",
+        "category":  "strength",
+        "moods":  [
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "business",
+                           "finances",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "str-06",
+        "greetings":  [
+                          "Evening word.",
+                          "You held on."
+                      ],
+        "body":  "You made it through today. That is strength, even if the to-do list is not finished.",
+        "action":  "Rest for 20 minutes without guilt â€” strength needs fuel.",
+        "category":  "strength",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-01",
+        "greetings":  [
+                          "Be brave.",
+                          "First step."
+                      ],
+        "body":  "Courage is not the absence of fear. It is one small act done while afraid.",
+        "action":  "Take the first small step you have been rehearsing in your head.",
+        "category":  "courage",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "career",
+                           "growth"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-02",
+        "greetings":  [
+                          "Gentle courage.",
+                          "You can."
+                      ],
+        "body":  "You do not need to leap. A quiet, steady step forward still counts as brave.",
+        "action":  "Send the message you are afraid to send.",
+        "category":  "courage",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "career",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-03",
+        "greetings":  [
+                          "Decision time.",
+                          "Choose."
+                      ],
+        "body":  "Clarity follows action. Make the small brave choice and adjust as you learn.",
+        "action":  "Take the first small step you have been rehearsing in your head.",
+        "category":  "courage",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "business",
+                           "purpose",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical",
+                       "bold"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-04",
+        "greetings":  [
+                          "Boundary word.",
+                          "Protect peace."
+                      ],
+        "body":  "Saying no to what drains you is saying yes to what matters. That is courage too.",
+        "action":  "Say no to one thing that drains you today.",
+        "category":  "courage",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family",
+                           "growth"
+                       ],
+        "styles":  [
+                       "direct",
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-05",
+        "greetings":  [
+                          "Before you start.",
+                          "Begin."
+                      ],
+        "body":  "You do not need perfection to begin. Give yourself permission to start messy.",
+        "action":  "Take the first small step you have been rehearsing in your head.",
+        "category":  "courage",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "business",
+                           "school",
+                           "growth"
+                       ],
+        "styles":  [
+                       "motivational",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "cour-06",
+        "greetings":  [
+                          "Reflect.",
+                          "Look back."
+                      ],
+        "body":  "Remember a time you were afraid and did it anyway. That same courage is still in you.",
+        "action":  "Say no to one thing that drains you today.",
+        "category":  "courage",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "purpose",
+                           "failure"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-01",
+        "greetings":  [
+                          "Celebrate.",
+                          "You did it."
+                      ],
+        "body":  "Pause and own this win. You worked for it, learned for it, and showed up for it.",
+        "action":  "Write down one win from this week, however small.",
+        "category":  "success",
+        "moods":  [
+                      "great",
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "growth"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "motivational",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-02",
+        "greetings":  [
+                          "Well earned.",
+                          "Enjoy."
+                      ],
+        "body":  "Success tastes better with gratitude. Notice who helped and what habit carried you.",
+        "action":  "Thank someone who helped you get this far.",
+        "category":  "success",
+        "moods":  [
+                      "great",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "career",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-03",
+        "greetings":  [
+                          "Next level.",
+                          "Stay hungry."
+                      ],
+        "body":  "Momentum loves direction. Enjoy today, then set one clear next target for tomorrow.",
+        "action":  "Set the next small target while momentum is warm.",
+        "category":  "success",
+        "moods":  [
+                      "great",
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "business",
+                           "growth",
+                           "career"
+                       ],
+        "styles":  [
+                       "bold",
+                       "practical",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-04",
+        "greetings":  [
+                          "Quiet win.",
+                          "Still counts."
+                      ],
+        "body":  "Not every victory is loud. Showing up consistently is a success worth honoring.",
+        "action":  "Write down one win from this week, however small.",
+        "category":  "success",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "growth",
+                           "purpose",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-05",
+        "greetings":  [
+                          "Share it.",
+                          "Lift others."
+                      ],
+        "body":  "Your progress can encourage someone behind you. Tell the story honestly, including the hard parts.",
+        "action":  "Thank someone who helped you get this far.",
+        "category":  "success",
+        "moods":  [
+                      "great",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "career",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "succ-06",
+        "greetings":  [
+                          "Stay grounded.",
+                          "Keep building."
+                      ],
+        "body":  "One win is a foundation, not a finish line. Keep the habits that built it.",
+        "action":  "Set the next small target while momentum is warm.",
+        "category":  "success",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "career",
+                           "growth"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-01",
+        "greetings":  [
+                          "After a fall.",
+                          "Get up gently."
+                      ],
+        "body":  "A rejection can close one door without defining your ability. Learn what you can and keep going.",
+        "action":  "Write what this setback taught you in one sentence.",
+        "category":  "failure",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "failure",
+                           "career",
+                           "business"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-02",
+        "greetings":  [
+                          "Try again.",
+                          "New data."
+                      ],
+        "body":  "Failure is feedback with a sting. Adjust one variable and test again â€” that is how breakthroughs form.",
+        "action":  "Try the same thing once more with one adjustment.",
+        "category":  "failure",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "business",
+                           "school",
+                           "failure"
+                       ],
+        "styles":  [
+                       "practical",
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-03",
+        "greetings":  [
+                          "No shame here.",
+                          "You tried."
+                      ],
+        "body":  "Trying and missing beats watching from the sidelines. Your courage to attempt still counts.",
+        "action":  "Share your story with someone safe â€” shame fades in light.",
+        "category":  "failure",
+        "moods":  [
+                      "struggling",
+                      "low"
+                  ],
+        "situations":  [
+                           "failure",
+                           "confidence",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-04",
+        "greetings":  [
+                          "Direct truth:",
+                          "Not the end."
+                      ],
+        "body":  "This moment feels final but it is not. Many comebacks started exactly where you are now.",
+        "action":  "Write what this setback taught you in one sentence.",
+        "category":  "failure",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "failure",
+                           "life-changes",
+                           "career"
+                       ],
+        "styles":  [
+                       "bold",
+                       "direct",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-05",
+        "greetings":  [
+                          "Exam season.",
+                          "Still learning."
+                      ],
+        "body":  "One grade does not measure your mind. Review, adjust your method, and keep building understanding.",
+        "action":  "Try the same thing once more with one adjustment.",
+        "category":  "failure",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "school",
+                           "failure",
+                           "growth"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fail-06",
+        "greetings":  [
+                          "Business dip.",
+                          "Stay in game."
+                      ],
+        "body":  "Slow sales are a season, not a sentence. Talk to one customer today and learn one real need.",
+        "action":  "Try the same thing once more with one adjustment.",
+        "category":  "failure",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "business",
+                           "failure",
+                           "finances"
+                       ],
+        "styles":  [
+                       "practical",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-01",
+        "greetings":  [
+                          "For the heart.",
+                          "Reach out."
+                      ],
+        "body":  "Healthy bonds are built in small, consistent kindnesses. One warm message can reopen a door.",
+        "action":  "Send someone you appreciate a short message.",
+        "category":  "relationships",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-02",
+        "greetings":  [
+                          "Listen well.",
+                          "Be present."
+                      ],
+        "body":  "You do not have to fix them. Sometimes the greatest gift is five minutes of full attention.",
+        "action":  "Listen fully for five minutes without fixing.",
+        "category":  "relationships",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-03",
+        "greetings":  [
+                          "Repair note.",
+                          "Say sorry."
+                      ],
+        "body":  "A quick, sincere apology heals faster than a perfect one delayed. Keep it simple and kind.",
+        "action":  "Apologize for one small thing quickly and kindly.",
+        "category":  "relationships",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family"
+                       ],
+        "styles":  [
+                       "direct",
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-04",
+        "greetings":  [
+                          "Feeling lonely?",
+                          "You matter."
+                      ],
+        "body":  "Loneliness lies about your worth. You are still lovable and still needed, even tonight.",
+        "action":  "Send someone you appreciate a short message.",
+        "category":  "relationships",
+        "moods":  [
+                      "low",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "life-changes",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-05",
+        "greetings":  [
+                          "Love in action.",
+                          "Small gesture."
+                      ],
+        "body":  "Grand gestures fade; daily thoughtfulness lasts. Do one tiny loving thing on purpose today.",
+        "action":  "Send someone you appreciate a short message.",
+        "category":  "relationships",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "rel-06",
+        "greetings":  [
+                          "Hard talk.",
+                          "Stay kind."
+                      ],
+        "body":  "You can be honest and gentle at once. Say the true thing with care and listen to the reply.",
+        "action":  "Listen fully for five minutes without fixing.",
+        "category":  "relationships",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family",
+                           "career"
+                       ],
+        "styles":  [
+                       "direct",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-01",
+        "greetings":  [
+                          "Job hunt day.",
+                          "Keep applying."
+                      ],
+        "body":  "Each application is a seed. You only need one yes. Improve one line and plant another today.",
+        "action":  "Apply for one opportunity before the day ends.",
+        "category":  "career",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "career",
+                           "failure",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "practical",
+                       "motivational",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-02",
+        "greetings":  [
+                          "Interview nerves.",
+                          "You are ready."
+                      ],
+        "body":  "They already saw something in you on paper. Now let them meet the person behind it â€” calm and curious.",
+        "action":  "Message one contact to ask for advice, not a job.",
+        "category":  "career",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "career",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "bold",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-03",
+        "greetings":  [
+                          "Career pivot.",
+                          "Transferable."
+                      ],
+        "body":  "Nothing you learned is wasted. Your past skills are raw material for your next role.",
+        "action":  "Improve one line of your CV today.",
+        "category":  "career",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "career",
+                           "life-changes",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-04",
+        "greetings":  [
+                          "Work pressure.",
+                          "One thing."
+                      ],
+        "body":  "You cannot do everything today, but you can do the most important thing well. Start there.",
+        "action":  "Apply for one opportunity before the day ends.",
+        "category":  "career",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "career",
+                           "business"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-05",
+        "greetings":  [
+                          "Stuck at work?",
+                          "Grow anyway."
+                      ],
+        "body":  "Even a hard job teaches discipline, patience, and skill. Extract the lesson while you plan ahead.",
+        "action":  "Improve one line of your CV today.",
+        "category":  "career",
+        "moods":  [
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "career",
+                           "growth"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "car-06",
+        "greetings":  [
+                          "Bold move.",
+                          "Network."
+                      ],
+        "body":  "Opportunities travel through people. One honest conversation can open what applications cannot.",
+        "action":  "Message one contact to ask for advice, not a job.",
+        "category":  "career",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "bold",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-01",
+        "greetings":  [
+                          "Money stress.",
+                          "Breathe first."
+                      ],
+        "body":  "Money pressure is real, but panic spends energy you need for solutions. Calm first, plan next.",
+        "action":  "Write down every spend from yesterday without judgment.",
+        "category":  "money",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "finances",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-02",
+        "greetings":  [
+                          "Small saver.",
+                          "Tiny counts."
+                      ],
+        "body":  "Wealth is built in tiny consistent moves. Even a dollar saved proves you are in control.",
+        "action":  "Move a tiny amount to savings, even $1.",
+        "category":  "money",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "finances",
+                           "growth",
+                           "growth"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-03",
+        "greetings":  [
+                          "Business cash.",
+                          "Watch flow."
+                      ],
+        "body":  "Revenue is vanity, cash flow is sanity. Review one number today and act on what it tells you.",
+        "action":  "Write down every spend from yesterday without judgment.",
+        "category":  "money",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "business",
+                           "finances"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-04",
+        "greetings":  [
+                          "Gratitude check.",
+                          "You have more."
+                      ],
+        "body":  "Scarcity shouts, but inventory whispers truth. List what you already have before chasing more.",
+        "action":  "List three things you already have that save you money.",
+        "category":  "money",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "finances",
+                           "growth"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-05",
+        "greetings":  [
+                          "Debt weight.",
+                          "One step."
+                      ],
+        "body":  "Debt feels endless until you attack one piece. Choose the smallest balance and make a plan.",
+        "action":  "Write down every spend from yesterday without judgment.",
+        "category":  "money",
+        "moods":  [
+                      "struggling",
+                      "low"
+                  ],
+        "situations":  [
+                           "finances",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "direct",
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "mon-06",
+        "greetings":  [
+                          "Bold earner.",
+                          "Create value."
+                      ],
+        "body":  "Money follows value. Solve one painful problem for someone and the income will follow effort.",
+        "action":  "Move a tiny amount to savings, even $1.",
+        "category":  "money",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "business",
+                           "finances",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-01",
+        "greetings":  [
+                          "Why you?",
+                          "You matter."
+                      ],
+        "body":  "Your life is not random. Someone needs the exact lessons only your journey taught you.",
+        "action":  "Write one sentence about who you want to help.",
+        "category":  "purpose",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "life-changes",
+                           "growth"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-02",
+        "greetings":  [
+                          "Direction hint.",
+                          "Follow pull."
+                      ],
+        "body":  "Pay attention to what energizes you. Purpose often hides inside quiet curiosity.",
+        "action":  "Spend 10 minutes on work that feels meaningful.",
+        "category":  "purpose",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "career",
+                           "growth"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-03",
+        "greetings":  [
+                          "Fear check.",
+                          "Answer honestly."
+                      ],
+        "body":  "If fear were silent, what would you attempt? Write it down â€” that is a clue to purpose.",
+        "action":  "Ask: what would I do if I were not afraid? Write it down.",
+        "category":  "purpose",
+        "moods":  [
+                      "okay",
+                      "low",
+                      "good"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "confidence",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "bold",
+                       "reflective",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-04",
+        "greetings":  [
+                          "Serve small.",
+                          "Start near."
+                      ],
+        "body":  "You do not need a stage to live on purpose. Help one person near you today with excellence.",
+        "action":  "Write one sentence about who you want to help.",
+        "category":  "purpose",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "relationships",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-05",
+        "greetings":  [
+                          "Waiting season.",
+                          "Still called."
+                      ],
+        "body":  "Delay is not denial. Use this quiet season to build skill for the louder one coming.",
+        "action":  "Spend 10 minutes on work that feels meaningful.",
+        "category":  "purpose",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "failure",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "pur-06",
+        "greetings":  [
+                          "Bold calling.",
+                          "Step up."
+                      ],
+        "body":  "Playing small does not serve anyone. Own the bigger vision quietly forming in you.",
+        "action":  "Ask: what would I do if I were not afraid? Write it down.",
+        "category":  "purpose",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "career",
+                           "growth"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-01",
+        "greetings":  [
+                          "Truth check.",
+                          "Believe you."
+                      ],
+        "body":  "Doubt is loud but not accurate. Counter one lie with one documented fact about you.",
+        "action":  "Repeat one true fact about your ability out loud.",
+        "category":  "self-belief",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "failure",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "direct",
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-02",
+        "greetings":  [
+                          "Evidence file.",
+                          "Open it."
+                      ],
+        "body":  "You have proof of capability in your past. Revisit one win and borrow its confidence today.",
+        "action":  "Revisit a past win and write how you earned it.",
+        "category":  "self-belief",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "growth",
+                           "career"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-03",
+        "greetings":  [
+                          "Inner critic.",
+                          "Pause it."
+                      ],
+        "body":  "You would not speak to a friend the way you speak to yourself. Offer yourself the same grace.",
+        "action":  "Stop one self-critical sentence and replace it with truth.",
+        "category":  "self-belief",
+        "moods":  [
+                      "struggling",
+                      "low"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "relationships",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-04",
+        "greetings":  [
+                          "Bold self.",
+                          "Own it."
+                      ],
+        "body":  "Stop shrinking to stay comfortable. Take up the full space your talent deserves today.",
+        "action":  "Repeat one true fact about your ability out loud.",
+        "category":  "self-belief",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "confidence",
+                           "career",
+                           "career"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-05",
+        "greetings":  [
+                          "School mind.",
+                          "You learn."
+                      ],
+        "body":  "Struggling to grasp something means your brain is growing, not failing. Keep practicing deliberately.",
+        "action":  "Revisit a past win and write how you earned it.",
+        "category":  "self-belief",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "school",
+                           "confidence",
+                           "growth"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "sb-06",
+        "greetings":  [
+                          "Fresh page.",
+                          "New story."
+                      ],
+        "body":  "Your past mistakes do not own your future choices. Write one truer sentence about who you are.",
+        "action":  "Stop one self-critical sentence and replace it with truth.",
+        "category":  "self-belief",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "failure",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-01",
+        "greetings":  [
+                          "Thankful morning.",
+                          "Notice good."
+                      ],
+        "body":  "Gratitude turns ordinary mornings into gifts. Name three small goods before you rush out.",
+        "action":  "Write down three things you are grateful for.",
+        "category":  "gratitude",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "relationships",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-02",
+        "greetings":  [
+                          "Hard day thanks.",
+                          "Still gifts."
+                      ],
+        "body":  "Even on heavy days, something held you â€” breath, shelter, one kind person. Name it.",
+        "action":  "Write down three things you are grateful for.",
+        "category":  "gratitude",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "failure",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-03",
+        "greetings":  [
+                          "Thank someone.",
+                          "Say it."
+                      ],
+        "body":  "Unexpressed thanks fades. Tell one person specifically what they did and why it mattered.",
+        "action":  "Thank one person specifically today.",
+        "category":  "gratitude",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "relationships",
+                           "family",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-04",
+        "greetings":  [
+                          "Ordinary joy.",
+                          "Capture it."
+                      ],
+        "body":  "Joy hides in normal moments â€” light, laughter, warm food. Photograph one and keep it.",
+        "action":  "Photograph one ordinary good thing.",
+        "category":  "gratitude",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "growth",
+                           "family",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-05",
+        "greetings":  [
+                          "Work thanks.",
+                          "Value team."
+                      ],
+        "body":  "Someone makes your work easier daily. Naming their help builds a culture of gratitude.",
+        "action":  "Thank one person specifically today.",
+        "category":  "gratitude",
+        "moods":  [
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "grat-06",
+        "greetings":  [
+                          "Evening review.",
+                          "Count gifts."
+                      ],
+        "body":  "End today by counting gains, not gaps. What worked, however small, deserves notice.",
+        "action":  "Write down three things you are grateful for.",
+        "category":  "gratitude",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-01",
+        "greetings":  [
+                          "Tiny habit.",
+                          "Two minutes."
+                      ],
+        "body":  "Discipline is not intensity, it is consistency. Shrink the habit until you cannot say no.",
+        "action":  "Do the smallest version of your habit today (2 minutes counts).",
+        "category":  "discipline",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "growth",
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "practical",
+                       "direct",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-02",
+        "greetings":  [
+                          "Night setup.",
+                          "Win tomorrow."
+                      ],
+        "body":  "Mornings are won the night before. Prepare one thing tonight your future self will thank.",
+        "action":  "Lay out what you need for tomorrow tonight.",
+        "category":  "discipline",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "growth",
+                           "school",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-03",
+        "greetings":  [
+                          "Track it.",
+                          "Mark X."
+                      ],
+        "body":  "What gets marked gets maintained. Put one honest check on your habit tracker today.",
+        "action":  "Track one habit with a simple check mark.",
+        "category":  "discipline",
+        "moods":  [
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "growth",
+                           "growth"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-04",
+        "greetings":  [
+                          "Missed yesterday?",
+                          "Restart now."
+                      ],
+        "body":  "Missing once is an accident; missing twice is a pattern. Restart today without shame.",
+        "action":  "Do the smallest version of your habit today (2 minutes counts).",
+        "category":  "discipline",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "growth",
+                           "failure",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "direct",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-05",
+        "greetings":  [
+                          "Focus block.",
+                          "One task."
+                      ],
+        "body":  "Distraction is the enemy of depth. Give one task 25 undivided minutes and watch it move.",
+        "action":  "Track one habit with a simple check mark.",
+        "category":  "discipline",
+        "moods":  [
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "school",
+                           "business",
+                           "career"
+                       ],
+        "styles":  [
+                       "bold",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "disc-06",
+        "greetings":  [
+                          "Steady wins.",
+                          "Keep plodding."
+                      ],
+        "body":  "Slow and steady still finishes. Protect the streak by keeping today\u0027s step tiny but done.",
+        "action":  "Lay out what you need for tomorrow tonight.",
+        "category":  "discipline",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-01",
+        "greetings":  [
+                          "Lead well.",
+                          "Encourage first."
+                      ],
+        "body":  "Great leaders notice effort before results. Praise one specific action you saw today.",
+        "action":  "Encourage one person on your team specifically.",
+        "category":  "leadership",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-02",
+        "greetings":  [
+                          "Decide kindly.",
+                          "Be clear."
+                      ],
+        "body":  "Unclear leadership is unkind. Make the delayed decision and communicate it with respect.",
+        "action":  "Decide one thing you have been delaying and communicate it.",
+        "category":  "leadership",
+        "moods":  [
+                      "okay",
+                      "good"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "family"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-03",
+        "greetings":  [
+                          "Serve team.",
+                          "Remove blocks."
+                      ],
+        "body":  "Your job is to make their work easier. Ask what obstacle you can clear this week.",
+        "action":  "Ask your people what obstacle you can remove.",
+        "category":  "leadership",
+        "moods":  [
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "career",
+                           "business"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-04",
+        "greetings":  [
+                          "Under pressure.",
+                          "Stay steady."
+                      ],
+        "body":  "Teams borrow calm from their leader. Breathe, prioritize one thing, and speak hope plainly.",
+        "action":  "Encourage one person on your team specifically.",
+        "category":  "leadership",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "career",
+                           "business",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "bold"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-05",
+        "greetings":  [
+                          "Family lead.",
+                          "Model it."
+                      ],
+        "body":  "At home, leadership is example. Do first what you ask of others â€” calmly and consistently.",
+        "action":  "Ask your people what obstacle you can remove.",
+        "category":  "leadership",
+        "moods":  [
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "family",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "lead-06",
+        "greetings":  [
+                          "Vision cast.",
+                          "Point ahead."
+                      ],
+        "body":  "People endure hard todays when they see a meaningful tomorrow. Describe the why again today.",
+        "action":  "Decide one thing you have been delaying and communicate it.",
+        "category":  "leadership",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "career",
+                           "purpose",
+                           "business"
+                       ],
+        "styles":  [
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-01",
+        "greetings":  [
+                          "Call home.",
+                          "Just listen."
+                      ],
+        "body":  "Family bonds grow in listening, not lecturing. Call and let them finish their sentences today.",
+        "action":  "Call one family member just to listen.",
+        "category":  "family",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "family",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-02",
+        "greetings":  [
+                          "Dinner table.",
+                          "Be present."
+                      ],
+        "body":  "One undistracted meal builds more trust than a week of hurried hellos. Put phones away.",
+        "action":  "Share one meal without phones today.",
+        "category":  "family",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "family",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-03",
+        "greetings":  [
+                          "Say thanks.",
+                          "At home first."
+                      ],
+        "body":  "Charity starts at home. Speak one specific appreciation to someone under your roof.",
+        "action":  "Say one specific appreciation at home.",
+        "category":  "family",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "family",
+                           "growth"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-04",
+        "greetings":  [
+                          "Tense home?",
+                          "Stay soft."
+                      ],
+        "body":  "Volume never won understanding. Lower your voice, state needs clearly, and listen back.",
+        "action":  "Call one family member just to listen.",
+        "category":  "family",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "family",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "direct"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-05",
+        "greetings":  [
+                          "Far from home.",
+                          "Bridge miles."
+                      ],
+        "body":  "Distance does not have to mean disconnection. One intentional call shrinks a thousand miles.",
+        "action":  "Call one family member just to listen.",
+        "category":  "family",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "good"
+                  ],
+        "situations":  [
+                           "family",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "friendly",
+                       "reflective"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "fam-06",
+        "greetings":  [
+                          "Parent heart.",
+                          "Patient love."
+                      ],
+        "body":  "Children remember tone more than words. Correct calmly today and connection will follow.",
+        "action":  "Say one specific appreciation at home.",
+        "category":  "family",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "family",
+                           "career"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "practical"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-01",
+        "greetings":  [
+                          "Grow daily.",
+                          "Learn tiny."
+                      ],
+        "body":  "You do not need to transform overnight. Fifteen focused minutes compounds into mastery.",
+        "action":  "Spend 15 minutes learning one small skill.",
+        "category":  "growth",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "great"
+                  ],
+        "situations":  [
+                           "growth",
+                           "school",
+                           "career"
+                       ],
+        "styles":  [
+                       "practical",
+                       "motivational",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-02",
+        "greetings":  [
+                          "Journal prompt.",
+                          "Look back."
+                      ],
+        "body":  "Growth is easier to see backward. Write what changed in you this month â€” you will be surprised.",
+        "action":  "Journal for five minutes: what grew in me this month?",
+        "category":  "growth",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "growth",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "reflective",
+                       "gentle"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-03",
+        "greetings":  [
+                          "Less scroll.",
+                          "More skill."
+                      ],
+        "body":  "Trade ten minutes of scrolling for ten minutes of practice. Your future self keeps the difference.",
+        "action":  "Replace 10 minutes of scrolling with practice.",
+        "category":  "growth",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "growth",
+                           "growth"
+                       ],
+        "styles":  [
+                       "direct",
+                       "practical",
+                       "bold"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-04",
+        "greetings":  [
+                          "Feedback gift.",
+                          "Ask for it."
+                      ],
+        "body":  "Growth loves honest mirrors. Ask one trusted person what one thing you could improve.",
+        "action":  "Spend 15 minutes learning one small skill.",
+        "category":  "growth",
+        "moods":  [
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "career",
+                           "career"
+                       ],
+        "styles":  [
+                       "direct",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-05",
+        "greetings":  [
+                          "Plateau season.",
+                          "Keep digging."
+                      ],
+        "body":  "Progress pauses before it jumps. Stay consistent through the flat part â€” the lift is coming.",
+        "action":  "Journal for five minutes: what grew in me this month?",
+        "category":  "growth",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "growth",
+                           "failure"
+                       ],
+        "styles":  [
+                       "gentle",
+                       "motivational"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "gro-06",
+        "greetings":  [
+                          "Morning learner.",
+                          "One page."
+                      ],
+        "body":  "Read one page, practice one rep, write one line. Small daily inputs create large yearly shifts.",
+        "action":  "Replace 10 minutes of scrolling with practice.",
+        "category":  "growth",
+        "moods":  [
+                      "great",
+                      "good",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "school"
+                       ],
+        "styles":  [
+                       "practical",
+                       "friendly"
+                   ],
+        "faith":  false
+    },
+    {
+        "id":  "faith-01",
+        "greetings":  [
+                          "Peace for today.",
+                          "Be still."
+                      ],
+        "body":  "God has not forgotten you in this waiting room. His timing is wiser than our hurry.",
+        "action":  "Read one short passage and sit in silence for two minutes.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "life-changes",
+                           "failure"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  true,
+        "scripture":  "Isaiah 40:31 â€” Those who hope in the Lord will renew their strength."
+    },
+    {
+        "id":  "faith-02",
+        "greetings":  [
+                          "Morning prayer.",
+                          "Talk honestly."
+                      ],
+        "body":  "Bring God your real feelings, not polished words. He can handle your honest heart today.",
+        "action":  "Pray honestly for two minutes about today.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "family",
+                           "growth"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "gentle"
+                   ],
+        "faith":  true,
+        "scripture":  "Philippians 4:6 â€” Do not be anxious; present your requests to God."
+    },
+    {
+        "id":  "faith-03",
+        "greetings":  [
+                          "Strength verse.",
+                          "Hold on."
+                      ],
+        "body":  "When you feel weak, grace is strongest. Lean on His strength, not just your own effort.",
+        "action":  "Write one promise you are holding onto.",
+        "category":  "faith",
+        "moods":  [
+                      "struggling",
+                      "low"
+                  ],
+        "situations":  [
+                           "life-changes",
+                           "failure"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "bold"
+                   ],
+        "faith":  true,
+        "scripture":  "2 Corinthians 12:9 â€” My grace is sufficient for you."
+    },
+    {
+        "id":  "faith-04",
+        "greetings":  [
+                          "Gratitude prayer.",
+                          "Thank Him."
+                      ],
+        "body":  "Every good gift has a Giver. Pause and thank God for three specific mercies today.",
+        "action":  "Write one promise you are holding onto.",
+        "category":  "faith",
+        "moods":  [
+                      "good",
+                      "great",
+                      "okay"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "growth"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "reflective"
+                   ],
+        "faith":  true,
+        "scripture":  "James 1:17 â€” Every good and perfect gift is from above."
+    },
+    {
+        "id":  "faith-05",
+        "greetings":  [
+                          "Courage in Christ.",
+                          "Fear not."
+                      ],
+        "body":  "Fear is not your shepherd. Walk into today knowing God goes ahead of you.",
+        "action":  "Pray honestly for two minutes about today.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "okay",
+                      "struggling"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "career",
+                           "confidence"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "bold",
+                       "motivational"
+                   ],
+        "faith":  true,
+        "scripture":  "Joshua 1:9 â€” Be strong and courageous, for the Lord is with you."
+    },
+    {
+        "id":  "faith-06",
+        "greetings":  [
+                          "Rest in Him.",
+                          "Sabbath gift."
+                      ],
+        "body":  "You do not have to strive without stopping. God built rest into rhythm for your good.",
+        "action":  "Read one short passage and sit in silence for two minutes.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "growth",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "gentle"
+                   ],
+        "faith":  true,
+        "scripture":  "Matthew 11:28 â€” Come to me, all who are weary, and I will give you rest."
+    },
+    {
+        "id":  "faith-07",
+        "greetings":  [
+                          "Provision trust.",
+                          "He provides."
+                      ],
+        "body":  "Money worries test faith, not worth. Work wisely today and trust God with what you cannot control.",
+        "action":  "Pray honestly for two minutes about today.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "finances",
+                           "business"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "practical"
+                   ],
+        "faith":  true,
+        "scripture":  "Philippians 4:19 â€” God will meet all your needs."
+    },
+    {
+        "id":  "faith-08",
+        "greetings":  [
+                          "Family blessing.",
+                          "Pray home."
+                      ],
+        "body":  "Speak blessing over your household today. Prayer covers what your presence cannot.",
+        "action":  "Pray honestly for two minutes about today.",
+        "category":  "faith",
+        "moods":  [
+                      "good",
+                      "okay",
+                      "low"
+                  ],
+        "situations":  [
+                           "family",
+                           "relationships"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "friendly"
+                   ],
+        "faith":  true,
+        "scripture":  "Numbers 6:24 â€” The Lord bless you and keep you."
+    },
+    {
+        "id":  "faith-09",
+        "greetings":  [
+                          "New mercies.",
+                          "Fresh start."
+                      ],
+        "body":  "His mercies are new every morning. Yesterday does not disqualify you from grace today.",
+        "action":  "Read one short passage and sit in silence for two minutes.",
+        "category":  "faith",
+        "moods":  [
+                      "struggling",
+                      "low",
+                      "okay"
+                  ],
+        "situations":  [
+                           "failure",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "gentle",
+                       "reflective"
+                   ],
+        "faith":  true,
+        "scripture":  "Lamentations 3:22-23 â€” Great is His faithfulness; mercies new every morning."
+    },
+    {
+        "id":  "faith-10",
+        "greetings":  [
+                          "Purpose promise.",
+                          "Called."
+                      ],
+        "body":  "God shaped you with intention. Your gifts are clues to the assignment He trusts you with.",
+        "action":  "Write one promise you are holding onto.",
+        "category":  "faith",
+        "moods":  [
+                      "okay",
+                      "good",
+                      "low"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "career"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "reflective",
+                       "motivational"
+                   ],
+        "faith":  true,
+        "scripture":  "Jeremiah 29:11 â€” Plans to prosper you and give you hope."
+    },
+    {
+        "id":  "faith-11",
+        "greetings":  [
+                          "Persevere.",
+                          "Keep faith."
+                      ],
+        "body":  "Do not throw away your confidence. The harvest comes to those who do not quit in faith.",
+        "action":  "Write one promise you are holding onto.",
+        "category":  "faith",
+        "moods":  [
+                      "low",
+                      "struggling",
+                      "okay"
+                  ],
+        "situations":  [
+                           "business",
+                           "failure",
+                           "purpose"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "bold"
+                   ],
+        "faith":  true,
+        "scripture":  "Galatians 6:9 â€” Let us not grow weary in doing good."
+    },
+    {
+        "id":  "faith-12",
+        "greetings":  [
+                          "Peace prayer.",
+                          "Still heart."
+                      ],
+        "body":  "Anxiety argues loudly, but peace is stronger. Hand today\u0027s worries to God one by one.",
+        "action":  "Pray honestly for two minutes about today.",
+        "category":  "faith",
+        "moods":  [
+                      "struggling",
+                      "low"
+                  ],
+        "situations":  [
+                           "purpose",
+                           "life-changes"
+                       ],
+        "styles":  [
+                       "spiritual",
+                       "gentle"
+                   ],
+        "faith":  true,
+        "scripture":  "John 14:27 â€” Peace I leave with you; do not let your hearts be troubled."
+    }
+]

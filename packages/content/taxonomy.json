@@ -1,0 +1,9 @@
+{
+  "categories": ["hope", "confidence", "motivation", "strength", "courage", "success", "failure", "relationships", "career", "money", "purpose", "self-belief", "gratitude", "discipline", "leadership", "faith", "family", "growth"],
+  "moods": ["great", "good", "okay", "low", "struggling"],
+  "moodLabels": { "great": "Great", "good": "Good", "okay": "Okay", "low": "Low", "struggling": "Struggling" },
+  "situations": ["career", "school", "business", "finances", "relationships", "family", "growth", "confidence", "purpose", "failure", "life-changes"],
+  "styles": ["gentle", "bold", "motivational", "practical", "spiritual", "reflective", "friendly", "direct"],
+  "intents": ["discouraged", "confidence", "overwhelmed", "motivation", "failure", "afraid-to-start", "lonely", "hope", "keep-going", "decision", "strength"],
+  "needs": ["hope", "strength", "motivation", "courage", "confidence", "faith", "focus", "peace", "love", "fresh-start"]
+}
