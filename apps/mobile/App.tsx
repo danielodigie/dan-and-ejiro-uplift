@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { Onboarding, Home, NeedLift } from './lib/screens';
 
-// Phase 4 skeleton tabs: Home / Need Lift / Goals / Journal / Profile
-// Goals + Journal + Profile use local state in MVP; API CRUD lands in Sprint D/E.
+// Phase 4D tabs: Home / Need Lift / Goals / Journal / Profile
+// Goals + Journal now POST to local Postgres API with offline fallback.
 export default function App() {
   const [prefs, setPrefs] = useState<any>(null);
   const [tab, setTab] = useState('home');
