@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dan and Ejiro Uplift</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 640px; margin: 0 auto; padding: 24px; background: #FFFDF5; color: #111; }
+    .card { border: 3px solid #111; border-radius: 16px; padding: 16px; margin: 12px 0; background: #fff; }
+    .btn { border: 3px solid #111; border-radius: 999px; padding: 10px 18px; font-weight: 800; background: #FFC400; cursor: pointer; }
+    input, select, textarea { width: 100%; padding: 10px; margin: 6px 0; border: 2px solid #111; border-radius: 10px; }
+    #log { font-size: 12px; white-space: pre-wrap; color: #555; }
+  </style>
+</head>
+<body>
+  <h1>Dan and Ejiro Uplift</h1>
+  <p>Daily encouragement, goals &amp; journal. Web client for the Uplift API.</p>
+
+  <div class="card">
+    <h2>1. API connection</h2>
+    <p>API: <code id="apiUrl"></code></p>
+    <p>Status: <strong id="health">checking…</strong></p>
+  </div>
+
+  <div class="card">
+    <h2>2. Sign in / Sign up</h2>
+    <input id="email" type="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+    <button class="btn" id="btnSignup">Sign up</button>
+    <button class="btn" id="btnSignin">Sign in</button>
+  </div>
+
+  <div class="card">
+    <h2>3. Today's Uplift</h2>
+    <select id="mood">
+      <option value="okay">okay</option><option value="discouraged">discouraged</option>
+      <option value="overwhelmed">overwhelmed</option><option value="hopeful">hopeful</option>
+    </select>
+    <button class="btn" id="btnToday">Get Today's Uplift</button>
+    <div id="uplift"></div>
+  </div>
+
+  <div class="card">
+    <h2>4. Check-in</h2>
+    <button class="btn" id="btnCheckin">Check in (uses mood above)</button>
+  </div>
+
+  <div class="card">
+    <h2>5. Goals</h2>
+    <input id="goalTitle" placeholder="New goal title" />
+    <button class="btn" id="btnGoal">Add goal</button>
+    <button class="btn" id="btnGoals">Refresh goals</button>
+    <div id="goals"></div>
+  </div>
+
+  <div id="log"></div>
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

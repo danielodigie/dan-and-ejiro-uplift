@@ -1,8 +1,9 @@
 {
   "name": "@uplift/api",
   "version": "0.1.0",
-  "scripts": { "dev": "tsx watch src/index.ts" },
+  "scripts": { "dev": "tsx watch src/index.ts", "start": "tsx src/index.ts" },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "hono": "^4.0.0",
     "better-auth": "^1.0.0",
     "drizzle-orm": "^0.33.0",

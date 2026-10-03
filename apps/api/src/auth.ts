@@ -8,4 +8,10 @@ export const auth = betterAuth({
   database: drizzleAdapter(db, { provider: 'pg' }),
   emailAndPassword: { enabled: true, requireEmailVerification: false },
   session: { expiresIn: 60 * 60 * 24 * 30 },
+  // Production (Netlify frontend + Render API are cross-site): cookies must be
+  // trusted explicitly or Better Auth rejects the origin.
+  trustedOrigins: (process.env.FRONTEND_URL || process.env.MOBILE_URL || '')
+    .split(',')
+    .map(s => s.trim())
+    .filter(Boolean),
 });

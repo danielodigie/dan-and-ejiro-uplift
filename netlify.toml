@@ -1,0 +1,13 @@
+# Netlify — deploys ONLY the web frontend (apps/web).
+# In Netlify dashboard: Add new site → Import from GitHub →
+# select dan-and-ejiro-uplift → Netlify auto-detects this file.
+# Auto-deploy: every push to `main` rebuilds the frontend.
+[build]
+  base = "apps/web"
+  command = "npm install && npm run build"
+  publish = "dist"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

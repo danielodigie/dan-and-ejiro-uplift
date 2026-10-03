@@ -1,0 +1,36 @@
+# Render — deploys ONLY the Node API (apps/api, Hono + node-cron intact).
+# Option A (recommended): Render dashboard → New → Web Service → select repo →
+#   Root Directory: apps/api
+#   Build Command: npm install && npm install -g tsx   (or pnpm install if enabled)
+#   Start Command: npx tsx src/index.ts
+#   Health Check Path: /api/health
+#   Auto-deploy: Yes (default — every push to `main` redeploys).
+# Option B: `render blueprint launch` with this file.
+services:
+  - type: web
+    name: uplift-api
+    runtime: node
+    plan: free
+    rootDir: apps/api
+    buildCommand: npm install
+    startCommand: npx tsx src/index.ts
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: DATABASE_URL
+        sync: false # set to Neon pooled connection string in dashboard (contains ?sslmode=require)
+      - key: BETTER_AUTH_SECRET
+        generateValue: true
+      - key: BETTER_AUTH_URL
+        sync: false # set to https://<your-render-service>.onrender.com
+      - key: FRONTEND_URL
+        sync: false # set to https://<your-site>.netlify.app
+      - key: LLM_ENABLED
+        value: false
+# node-cron: runs in-process via startJobs() — works on Render as long as the
+# Free plan keeps ONE instance running. Note: Render Free spins down after
+# inactivity, so cron fires only while the instance is awake (first request wakes it).
+# If you need exact-time delivery on Free, add Render Cron Jobs (dashboard →
+# Cron Jobs → schedule POST https://<api>/api/events) as a wake-up/alternative.
