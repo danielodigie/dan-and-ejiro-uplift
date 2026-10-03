@@ -13,9 +13,34 @@ git commit -m "Deploy: Netlify web frontend + Render API + Neon Postgres"
 git push origin main
 ```
 
-## 1. Neon (hosted Postgres, free tier)
+## 1. Hosted Postgres — pick ONE: Supabase (recommended) or Neon
 
-1. https://neon.tech → New Project → name `uplift`, Postgres 16, region closest to you.
+Neon moved from `neon.tech` (dead) to `neon.com`. Either works; Supabase is
+described in full below because its dashboard lets you paste SQL directly.
+
+### Option A — Supabase (free tier, beginner-friendly)
+
+1. https://supabase.com → Start your project → **Continue with GitHub**.
+2. Create an organization if asked (any name, free plan) → **New project** →
+   name `uplift` → Database Password: click Generate and **save it somewhere**
+   (if lost, reset it later under Project Settings → Database) → Region: closest
+   to you (no Africa region — pick West EU/Ireland or Central EU/Frankfurt) →
+   Create project. Wait ~2 minutes until it is green/healthy.
+3. Create tables: left sidebar **SQL Editor → New query** → on your PC open
+   `packages/db/schema.sql`, copy ALL of it, paste, **Run**. Expect success.
+4. Seed content: **SQL Editor → New query** → open `packages/db/seed.sql`
+   (generated from `packages/content/uplifts.json` via
+   `node scripts/gen-seed-sql.cjs`), copy ALL, paste, **Run**.
+5. Verify: **SQL Editor → New query** → `SELECT COUNT(*) FROM uplifts;` →
+   Run → expect `114`.
+6. Connection string for Render: bottom-left gear → **Project Settings →
+   Database** → scroll to **Connection string** → choose the **Pooled
+   (Supavisor, port 6543)** tab → copy the URI → replace `[YOUR-PASSWORD]`
+   with the password from step 2. Keep it secret — never in git.
+
+### Option B — Neon
+
+1. https://neon.com → New Project → name `uplift`, Postgres 16, region closest to you.
 2. Copy the **pooled** connection string (ends `?sslmode=require`).
 3. Initialise schema + seed (one time, from your PC):
 ```powershell
@@ -35,7 +60,7 @@ pnpm --filter @uplift/db seed
    - Health Check Path: `/api/health`
    - Auto-deploy: Yes (pushes to `main` redeploy automatically).
 3. Environment variables (Dashboard → Environment, all secret there):
-   - `DATABASE_URL` = Neon pooled string
+    - `DATABASE_URL` = Supabase pooled string (or Neon pooled string)
    - `BETTER_AUTH_SECRET` = 32+ random chars (Generate)
    - `BETTER_AUTH_URL` = `https://<your-render-service>.onrender.com` (after first deploy; then redeploy)
    - `FRONTEND_URL` = `https://<your-site>.netlify.app` (after step 3; then redeploy)
