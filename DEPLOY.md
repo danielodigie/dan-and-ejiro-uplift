@@ -28,6 +28,8 @@ described in full below because its dashboard lets you paste SQL directly.
    Create project. Wait ~2 minutes until it is green/healthy.
 3. Create tables: left sidebar **SQL Editor → New query** → on your PC open
    `packages/db/schema.sql`, copy ALL of it, paste, **Run**. Expect success.
+   Then **New query** again → open `packages/db/better-auth.sql` (login tables),
+   copy ALL, paste, **Run**.
 4. Seed content: **SQL Editor → New query** → open `packages/db/seed.sql`
    (generated from `packages/content/uplifts.json` via
    `node scripts/gen-seed-sql.cjs`), copy ALL, paste, **Run**.
