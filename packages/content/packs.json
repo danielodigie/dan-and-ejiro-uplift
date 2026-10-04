@@ -1,0 +1,120 @@
+{
+  "packs": [
+    {
+      "id": "confidence-pack",
+      "title": "Confidence Pack",
+      "tagline": "A 7-day guided journey from self-doubt to steady self-belief.",
+      "priceStub": "NGN 1,500 (stub — no real charge in MVP)",
+      "premium": true,
+      "days": 7,
+      "category": "confidence"
+    }
+  ],
+  "days": [
+    {
+      "pack": "confidence-pack",
+      "day": 1,
+      "id": "conf-pack-01",
+      "greetings": ["Day 1 — Start where you are.", "Hello, friend."],
+      "body": "Confidence does not start with feeling ready. It starts with telling the truth about where you are and taking one honest step.",
+      "action": "Write down one true strength you already have.",
+      "reflection": "Where does self-doubt speak loudest for you right now — and what is one true fact that answers it?",
+      "category": "confidence",
+      "moods": ["okay", "low", "struggling"],
+      "situations": ["confidence", "career", "growth"],
+      "styles": ["gentle", "reflective", "friendly"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 2,
+      "id": "conf-pack-02",
+      "greetings": ["Day 2 — Evidence over fear.", "Good morning."],
+      "body": "Fear lists what could go wrong. Confidence lists what you have already survived. Your track record is stronger than your worry.",
+      "action": "List three hard things you have already handled.",
+      "reflection": "Pick one past win — how did you earn it, step by step?",
+      "category": "confidence",
+      "moods": ["low", "struggling", "good"],
+      "situations": ["confidence", "failure", "growth"],
+      "styles": ["bold", "motivational", "direct"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 3,
+      "id": "conf-pack-03",
+      "greetings": ["Day 3 — Small reps.", "Keep going."],
+      "body": "You do not build confidence in one leap. You build it in small reps done daily, especially when no one is watching.",
+      "action": "Do the smallest version of your habit today — 2 minutes counts.",
+      "reflection": "What 2-minute rep would prove to yourself that you show up?",
+      "category": "confidence",
+      "moods": ["okay", "good", "great"],
+      "situations": ["confidence", "growth", "purpose"],
+      "styles": ["practical", "motivational", "friendly"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 4,
+      "id": "conf-pack-04",
+      "greetings": ["Day 4 — Use your voice.", "Hello, friend."],
+      "body": "Your voice deserves room. Say one honest thing today — kindly, clearly — instead of shrinking to keep the peace.",
+      "action": "Say one honest sentence you have been holding back.",
+      "reflection": "What would you say if you were not afraid of being judged?",
+      "category": "confidence",
+      "moods": ["okay", "low", "good"],
+      "situations": ["confidence", "relationships", "career"],
+      "styles": ["bold", "direct", "friendly"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 5,
+      "id": "conf-pack-05",
+      "greetings": ["Day 5 — Reset after a setback.", "Start again."],
+      "body": "A bad day is data, not a verdict. Name what happened in one sentence, keep the lesson, and release the shame.",
+      "action": "Write what this week taught you in one sentence.",
+      "reflection": "What is the lesson — and what will you try differently once?",
+      "category": "confidence",
+      "moods": ["low", "struggling", "okay"],
+      "situations": ["confidence", "failure", "life-changes"],
+      "styles": ["gentle", "reflective", "practical"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 6,
+      "id": "conf-pack-06",
+      "greetings": ["Day 6 — Steady body, steady mind.", "Good morning."],
+      "body": "Stand tall, breathe slowly, and let your body remind your mind: you are safe to try. Calm is a form of courage.",
+      "action": "Stand tall, breathe deeply 5 times, state one strength aloud.",
+      "reflection": "Notice your body right now — where is tension, and what does it need?",
+      "category": "confidence",
+      "moods": ["okay", "good", "low"],
+      "situations": ["confidence", "growth", "family"],
+      "styles": ["practical", "gentle", "reflective"],
+      "faith": false,
+      "premium": true
+    },
+    {
+      "pack": "confidence-pack",
+      "day": 7,
+      "id": "conf-pack-07",
+      "greetings": ["Day 7 — Carry it forward.", "Look how far you've come."],
+      "body": "You showed up for seven days. Confidence is not loudness — it is the quiet trust that you will keep going. Take that with you.",
+      "action": "Thank one person who believed in you — then set your next target.",
+      "reflection": "What changed in you across these 7 days? Write it to your future self.",
+      "category": "confidence",
+      "moods": ["good", "great", "okay"],
+      "situations": ["confidence", "purpose", "growth"],
+      "styles": ["motivational", "friendly", "bold"],
+      "faith": false,
+      "premium": true
+    }
+  ]
+}
