@@ -130,8 +130,10 @@ journal.delete('/:id', async c => {
 });
 
 export const social = new Hono({ strict: false });
-social.use('*', need);
-social.get('/saves', async c => {
+// NOTE: no blanket use('*', need) here — this router is mounted at /api,
+// so a wildcard would auth-gate every /api/* route including open ones
+// like /api/health and /api/categories. Auth is applied per-route below.
+social.get('/saves', need, async c => {
   const u: any = c.get('user');
   try {
     const r: any = await db.execute(sql`SELECT * FROM saves WHERE user_id=${u.id}`);
@@ -140,7 +142,7 @@ social.get('/saves', async c => {
     return c.json([]);
   }
 });
-social.delete('/saves', async c => {
+social.delete('/saves', need, async c => {
   const u: any = c.get('user');
   const { upliftId, collection } = c.req.query();
   try {
@@ -149,7 +151,7 @@ social.delete('/saves', async c => {
   } catch {}
   return c.json({ ok: true });
 });
-social.get('/collections', async c => {
+social.get('/collections', need, async c => {
   const u: any = c.get('user');
   try {
     const r: any = await db.execute(sql`SELECT collection, COUNT(*) as count FROM saves WHERE user_id=${u.id} GROUP BY collection`);
@@ -158,7 +160,7 @@ social.get('/collections', async c => {
     return c.json([]);
   }
 });
-social.post('/share', async c => {
+social.post('/share', need, async c => {
   const u: any = c.get('user');
   const b = await c.req.json();
   try {
@@ -168,7 +170,7 @@ social.post('/share', async c => {
     return c.json({ ok: true });
   }
 });
-social.get('/shares', async c => {
+social.get('/shares', need, async c => {
   const u: any = c.get('user');
   try {
     const r: any = await db.execute(sql`SELECT * FROM shares WHERE user_id=${u.id} ORDER BY uplift_id DESC LIMIT 50`);
@@ -177,19 +179,19 @@ social.get('/shares', async c => {
     return c.json([]);
   }
 });
-social.post('/save', async c => {
+social.post('/save', need, async c => {
   const u: any = c.get('user');
   const b = await c.req.json();
   await db.execute(sql`INSERT INTO saves (user_id, uplift_id, collection) VALUES (${u.id}, ${b.upliftId}, ${b.collection || 'favorites'}) ON CONFLICT DO NOTHING`);
   return c.json({ ok: true });
 });
-social.post('/like', async c => {
+social.post('/like', need, async c => {
   const u: any = c.get('user');
   const b = await c.req.json();
   await db.execute(sql`INSERT INTO likes (user_id, uplift_id) VALUES (${u.id}, ${b.upliftId}) ON CONFLICT DO NOTHING`);
   return c.json({ ok: true });
 });
-social.get('/streak', async c => {
+social.get('/streak', need, async c => {
   const u: any = c.get('user');
   const r: any = await db.execute(sql`SELECT * FROM streaks WHERE user_id=${u.id}`);
   return c.json(r.rows[0] || { current_count: 0, longest: 0 });
