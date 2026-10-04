@@ -4,7 +4,8 @@ import { db } from './db.js';
 import * as authSchema from './auth-schema.js';
 
 export const auth = betterAuth({
-  baseURL: process.env.BETTER_AUTH_URL || 'http://localhost:3000',
+  // RENDER_EXTERNAL_URL is set automatically by Render (no dashboard var needed).
+  baseURL: process.env.BETTER_AUTH_URL || process.env.RENDER_EXTERNAL_URL || 'http://localhost:3000',
   secret: process.env.BETTER_AUTH_SECRET || 'dev-secret-change-me',
   database: drizzleAdapter(db, { provider: 'pg', schema: authSchema }),
   emailAndPassword: { enabled: true, requireEmailVerification: false },
