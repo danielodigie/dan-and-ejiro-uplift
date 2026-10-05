@@ -396,7 +396,8 @@ app.get('/api/debug/env', async c => {
     const u = new URL(raw);
     host = `${u.hostname}:${u.port || 'default'}`;
     dbUser = decodeURIComponent(u.username || '');
-    dbPasswordSet = !!(u.password || '');
+    const pw = u.password || '';
+    dbPasswordSet = !!pw;
   } catch { host = raw ? 'unparseable' : 'missing'; }
   return c.json({
     databaseUrlSet: !!raw,
@@ -404,6 +405,8 @@ app.get('/api/debug/env', async c => {
     dbHost: host,
     dbUser,
     dbPasswordSet,
+    dbPasswordLen: pw.length,
+    dbPasswordLooksPlaceholder: /[\[\]]/.test(pw),
     hasSslmode: raw.includes('sslmode='),
     betterAuthSecretSet: !!(process.env.BETTER_AUTH_SECRET || ''),
     betterAuthSecretLen: (process.env.BETTER_AUTH_SECRET || '').length,
