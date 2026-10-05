@@ -406,11 +406,17 @@ app.get('/api/debug/env', async c => {
   });
 });
 app.get('/api/debug/db', async c => {
+  const chain: any[] = [];
   try {
     const r: any = await db.execute(sql`SELECT 1 AS ok`);
     return c.json({ ok: true, rows: r.rows });
   } catch (e: any) {
-    return c.json({ ok: false, code: (e as any)?.code || null, message: String((e as any)?.message || e).slice(0, 300) });
+    let cur: any = e;
+    for (let i = 0; i < 4 && cur; i++) {
+      chain.push({ name: cur?.name || null, code: cur?.code || null, message: String(cur?.message || cur).slice(0, 300) });
+      cur = cur?.cause;
+    }
+    return c.json({ ok: false, chain });
   }
 });
 startJobs();
