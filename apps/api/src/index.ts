@@ -385,52 +385,6 @@ app.get('/api/files/url', async c => {
 
 app.get('/api/health', c => c.json({ ok: true, phase: '5-premium-test', stack: 'local-postgres + better-auth + r2' }));
 
-// TEMPORARY debug (remove once login works): reports presence/host/error-code
-// only. NEVER returns secret values (no passwords, no full URLs, no keys).
-app.get('/api/debug/env', async c => {
-  const raw = process.env.DATABASE_URL || '';
-  let host = '';
-  let dbUser = '';
-  let dbPasswordSet = false;
-  let pw = '';
-  try {
-    const u = new URL(raw);
-    host = `${u.hostname}:${u.port || 'default'}`;
-    dbUser = decodeURIComponent(u.username || '');
-    pw = u.password || '';
-    dbPasswordSet = !!pw;
-  } catch { host = raw ? 'unparseable' : 'missing'; }
-  return c.json({
-    databaseUrlSet: !!raw,
-    databaseUrlLen: raw.length,
-    dbHost: host,
-    dbUser,
-    dbPasswordSet,
-    dbPasswordLen: pw.length,
-    dbPasswordLooksPlaceholder: /[\[\]]/.test(pw),
-    dbPasswordHasUriBreakers: /[@:/?#]/.test(pw),
-    dbPasswordHasEdgeSpace: pw !== pw.trim(),
-    hasSslmode: raw.includes('sslmode='),
-    betterAuthSecretSet: !!(process.env.BETTER_AUTH_SECRET || ''),
-    betterAuthSecretLen: (process.env.BETTER_AUTH_SECRET || '').length,
-    frontendUrl: process.env.FRONTEND_URL || '',
-    renderExternalUrl: process.env.RENDER_EXTERNAL_URL || '',
-  });
-});
-app.get('/api/debug/db', async c => {
-  const chain: any[] = [];
-  try {
-    const r: any = await db.execute(sql`SELECT 1 AS ok`);
-    return c.json({ ok: true, rows: r.rows });
-  } catch (e: any) {
-    let cur: any = e;
-    for (let i = 0; i < 4 && cur; i++) {
-      chain.push({ name: cur?.name || null, code: cur?.code || null, message: String(cur?.message || cur).slice(0, 300) });
-      cur = cur?.cause;
-    }
-    return c.json({ ok: false, chain });
-  }
-});
 startJobs();
 
 const port = Number(process.env.PORT || process.env.API_PORT || 3000);
