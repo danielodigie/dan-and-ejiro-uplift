@@ -16,4 +16,13 @@ export const auth = betterAuth({
     .split(',')
     .map(s => s.trim())
     .filter(Boolean),
+  // Cross-site session: Lax (default) is never sent back by browsers on
+  // fetch to another site, so every post-login call 401s. None+Secure
+  // makes the browser attach the cookie on the Netlify -> Render calls.
+  advanced: {
+    cookies: {
+      session_token: { attributes: { sameSite: 'none', secure: true } },
+      session_data: { attributes: { sameSite: 'none', secure: true } },
+    },
+  },
 });
