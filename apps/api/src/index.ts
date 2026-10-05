@@ -408,6 +408,8 @@ app.get('/api/debug/env', async c => {
     dbPasswordSet,
     dbPasswordLen: pw.length,
     dbPasswordLooksPlaceholder: /[\[\]]/.test(pw),
+    dbPasswordHasUriBreakers: /[@:/?#]/.test(pw),
+    dbPasswordHasEdgeSpace: pw !== pw.trim(),
     hasSslmode: raw.includes('sslmode='),
     betterAuthSecretSet: !!(process.env.BETTER_AUTH_SECRET || ''),
     betterAuthSecretLen: (process.env.BETTER_AUTH_SECRET || '').length,
