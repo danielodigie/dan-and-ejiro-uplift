@@ -390,14 +390,20 @@ app.get('/api/health', c => c.json({ ok: true, phase: '5-premium-test', stack: '
 app.get('/api/debug/env', async c => {
   const raw = process.env.DATABASE_URL || '';
   let host = '';
+  let dbUser = '';
+  let dbPasswordSet = false;
   try {
     const u = new URL(raw);
     host = `${u.hostname}:${u.port || 'default'}`;
+    dbUser = decodeURIComponent(u.username || '');
+    dbPasswordSet = !!(u.password || '');
   } catch { host = raw ? 'unparseable' : 'missing'; }
   return c.json({
     databaseUrlSet: !!raw,
     databaseUrlLen: raw.length,
     dbHost: host,
+    dbUser,
+    dbPasswordSet,
     hasSslmode: raw.includes('sslmode='),
     betterAuthSecretSet: !!(process.env.BETTER_AUTH_SECRET || ''),
     betterAuthSecretLen: (process.env.BETTER_AUTH_SECRET || '').length,
