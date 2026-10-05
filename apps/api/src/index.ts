@@ -392,11 +392,12 @@ app.get('/api/debug/env', async c => {
   let host = '';
   let dbUser = '';
   let dbPasswordSet = false;
+  let pw = '';
   try {
     const u = new URL(raw);
     host = `${u.hostname}:${u.port || 'default'}`;
     dbUser = decodeURIComponent(u.username || '');
-    const pw = u.password || '';
+    pw = u.password || '';
     dbPasswordSet = !!pw;
   } catch { host = raw ? 'unparseable' : 'missing'; }
   return c.json({
