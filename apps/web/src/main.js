@@ -66,4 +66,45 @@ document.getElementById('btnGoals').onclick = async () => {
   } catch (e) { log(String(e)); }
 };
 
+document.getElementById('btnJournalAdd').onclick = async () => {
+  const body = document.getElementById('journalBody').value;
+  if (!body.trim()) { log('type one sentence first'); return; }
+  try { await req('/api/journal', { method: 'POST', body: JSON.stringify({ body: body.trim(), prompt: 'What are you proud of today?', victory: true }) }); log('journal saved'); }
+  catch (e) { log(String(e)); }
+};
+document.getElementById('btnJournal').onclick = async () => {
+  try {
+    const j = await req('/api/journal', { method: 'GET' });
+    document.getElementById('journal').innerHTML = (j || []).map(x => `<div>• ${x.body}</div>`).join('') || '(none)';
+  } catch (e) { log(String(e)); }
+};
+document.getElementById('btnProgress').onclick = async () => {
+  try {
+    const p = await req('/api/journal/progress', { method: 'GET' });
+    document.getElementById('journal').innerHTML = `<b>${p.title || "Look How Far You've Come"}</b>` +
+      ((p.victories || []).map(v => `<div>🌱 ${v.body}</div>`).join('') || '<div>(no victories yet)</div>');
+  } catch (e) { log(String(e)); }
+};
+document.getElementById('btnProfile').onclick = async () => {
+  try {
+    const p = await req('/api/profiles', { method: 'GET' });
+    const e = await req('/api/entitlements', { method: 'GET' }).catch(() => ({}));
+    document.getElementById('profile').innerHTML = `<div>Plan: <b>${e.tier || 'free'}</b></div><pre>${JSON.stringify(p, null, 1) || '(no profile yet)'}</pre>`;
+  } catch (e) { log(String(e)); }
+};
+document.getElementById('btnPacks').onclick = async () => {
+  try {
+    const packs = await req('/api/packs', { method: 'GET' });
+    const el = document.getElementById('profile');
+    el.innerHTML = (packs || []).map(p =>
+      `<div><b>${p.locked ? '🔒' : '✅'} ${p.title}</b><br/>${p.tagline}<br/>` +
+      (p.locked ? `<button class="btn" data-unlock="${p.id}">Unlock (no charge)</button>` : '') + '</div>'
+    ).join('') || '(none)';
+    el.querySelectorAll('[data-unlock]').forEach(b => b.onclick = async () => {
+      try { await req(`/api/packs/${encodeURIComponent(b.dataset.unlock)}/unlock`, { method: 'POST', body: '{}' }); log('unlocked — tap Show packs again'); }
+      catch (e) { log(String(e)); }
+    });
+  } catch (e) { log(String(e)); }
+};
+
 checkHealth();
