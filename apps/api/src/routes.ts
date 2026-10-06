@@ -46,14 +46,16 @@ checkins.post('/', async c => {
   const u: any = c.get('user');
   const b = await c.req.json();
   await db.execute(sql`INSERT INTO checkins (user_id, mood, note) VALUES (${u.id}, ${b.mood}, ${b.note || null})`);
+  // last_seen_date is TEXT ('YYYY-MM-DD'), so compare against TO_CHAR text —
+  // bare `text = CURRENT_DATE` has no Postgres operator and 500s every checkin.
   await db.execute(sql`INSERT INTO streaks (user_id, current_count, longest, last_seen_date)
-    VALUES (${u.id}, 1, 1, CURRENT_DATE)
+    VALUES (${u.id}, 1, 1, TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD'))
     ON CONFLICT (user_id) DO UPDATE SET
-      current_count = CASE WHEN streaks.last_seen_date = CURRENT_DATE THEN streaks.current_count
-        WHEN streaks.last_seen_date = CURRENT_DATE - INTERVAL '1 day' THEN streaks.current_count + 1 ELSE 1 END,
-      longest = GREATEST(streaks.longest, CASE WHEN streaks.last_seen_date = CURRENT_DATE THEN streaks.current_count
-        WHEN streaks.last_seen_date = CURRENT_DATE - INTERVAL '1 day' THEN streaks.current_count + 1 ELSE 1 END),
-      last_seen_date = CURRENT_DATE`);
+      current_count = CASE WHEN streaks.last_seen_date = TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD') THEN streaks.current_count
+        WHEN streaks.last_seen_date = TO_CHAR(CURRENT_DATE - INTERVAL '1 day', 'YYYY-MM-DD') THEN streaks.current_count + 1 ELSE 1 END,
+      longest = GREATEST(streaks.longest, CASE WHEN streaks.last_seen_date = TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD') THEN streaks.current_count
+        WHEN streaks.last_seen_date = TO_CHAR(CURRENT_DATE - INTERVAL '1 day', 'YYYY-MM-DD') THEN streaks.current_count + 1 ELSE 1 END),
+      last_seen_date = TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD')`);
   return c.json({ ok: true, message: 'Start again. Keep going.' });
 });
 
