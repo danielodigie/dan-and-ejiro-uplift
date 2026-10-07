@@ -4,6 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dan and Ejiro Uplift</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <meta name="theme-color" content="#FFC400" />
+  <link rel="apple-touch-icon" href="/icons/icon-180.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="Uplift" />
   <style>
     body { font-family: system-ui, sans-serif; max-width: 640px; margin: 0 auto; padding: 24px; background: #FFFDF5; color: #111; }
     .card { border: 3px solid #111; border-radius: 16px; padding: 16px; margin: 12px 0; background: #fff; }
@@ -21,7 +27,8 @@
     <a href="#checkin">Check-in</a> ·
     <a href="#goals">Goals</a> ·
     <a href="#journal">Journal</a> ·
-    <a href="#profile">Profile</a>
+    <a href="#profile">Profile</a> ·
+    <a href="#install">Install</a>
   </p>
 
   <div class="card" id="api">
@@ -75,6 +82,12 @@
     <button class="btn" id="btnProfile">Show my profile</button>
     <button class="btn" id="btnPacks">Show packs</button>
     <div id="profile"></div>
+  </div>
+
+  <div class="card" id="install">
+    <h2>8. Install the app 📲</h2>
+    <p id="installHint">Loading install status…</p>
+    <button class="btn" id="btnInstall" style="display:none">Install Uplift</button>
   </div>
 
   <div id="log"></div>

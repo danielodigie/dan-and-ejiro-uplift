@@ -107,4 +107,52 @@ document.getElementById('btnPacks').onclick = async () => {
   } catch (e) { log(String(e)); }
 };
 
+// PWA: offline shell + visible install (box 8). API calls always hit the
+// network (service worker only caches same-origin GETs, never /api... which
+// is cross-origin anyway), so login and data stay live.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').then(
+      () => {},
+      (e) => log('offline setup skipped: ' + (e && e.message)),
+    );
+  });
+}
+{
+  const installBtn = document.getElementById('btnInstall');
+  const installHint = document.getElementById('installHint');
+  const isIos = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone =
+    window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  let deferredPrompt = null;
+  const showHint = (t) => { if (installHint) installHint.textContent = t; };
+  if (isStandalone) {
+    if (installBtn) installBtn.style.display = 'none';
+    showHint('Running as an installed app. Open Uplift from your home screen.');
+  } else if (isIos) {
+    // iPhones have no install prompt: teach the manual path.
+    showHint('iPhone: tap Share (the square with an arrow), then Add to Home Screen.');
+  } else {
+    showHint('Android/Computer: tap Install below (or the browser menu → Install / Add to Home screen).');
+  }
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (installBtn) installBtn.style.display = '';
+    showHint('Tap Install below to add Uplift to your home screen.');
+  });
+  if (installBtn) installBtn.onclick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    try { await deferredPrompt.userChoice; } catch {}
+    deferredPrompt = null;
+    installBtn.style.display = 'none';
+  };
+  window.addEventListener('appinstalled', () => {
+    if (installBtn) installBtn.style.display = 'none';
+    showHint('Installed — open Uplift from your home screen.');
+    log('installed');
+  });
+}
+
 checkHealth();
