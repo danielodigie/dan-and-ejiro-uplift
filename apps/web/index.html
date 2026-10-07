@@ -15,14 +15,22 @@
 <body>
   <h1>Dan and Ejiro Uplift</h1>
   <p>Daily encouragement, goals &amp; journal. Web client for the Uplift API.</p>
+  <p>
+    <a href="#auth">Sign in</a> ·
+    <a href="#today">Today's Uplift</a> ·
+    <a href="#checkin">Check-in</a> ·
+    <a href="#goals">Goals</a> ·
+    <a href="#journal">Journal</a> ·
+    <a href="#profile">Profile</a>
+  </p>
 
-  <div class="card">
+  <div class="card" id="api">
     <h2>1. API connection</h2>
     <p>API: <code id="apiUrl"></code></p>
     <p>Status: <strong id="health">checking…</strong></p>
   </div>
 
-  <div class="card">
+  <div class="card" id="auth">
     <h2>2. Sign in / Sign up</h2>
     <input id="email" type="email" placeholder="Email" />
     <input id="password" type="password" placeholder="Password" />
@@ -30,7 +38,7 @@
     <button class="btn" id="btnSignin">Sign in</button>
   </div>
 
-  <div class="card">
+  <div class="card" id="today">
     <h2>3. Today's Uplift</h2>
     <select id="mood">
       <option value="okay">okay</option><option value="discouraged">discouraged</option>
@@ -40,12 +48,12 @@
     <div id="uplift"></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="checkin">
     <h2>4. Check-in</h2>
     <button class="btn" id="btnCheckin">Check in (uses mood above)</button>
   </div>
 
-  <div class="card">
+  <div class="card" id="goals">
     <h2>5. Goals</h2>
     <input id="goalTitle" placeholder="New goal title" />
     <button class="btn" id="btnGoal">Add goal</button>
@@ -53,7 +61,7 @@
     <div id="goals"></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="journal">
     <h2>6. Journal</h2>
     <input id="journalBody" placeholder="One line: what are you proud of today?" />
     <button class="btn" id="btnJournalAdd">Add entry</button>
@@ -62,7 +70,7 @@
     <div id="journal"></div>
   </div>
 
-  <div class="card">
+  <div class="card" id="profile">
     <h2>7. Profile &amp; Premium</h2>
     <button class="btn" id="btnProfile">Show my profile</button>
     <button class="btn" id="btnPacks">Show packs</button>
