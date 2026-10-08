@@ -7,5 +7,12 @@
     "dev:db": "pnpm --filter @uplift/db migrate",
     "dev:api": "pnpm --filter @uplift/api dev",
     "dev:mobile": "pnpm --filter @uplift/mobile start"
+  },
+  "pnpm": {
+    "overrides": {
+      "expo-constants": "16.0.2",
+      "expo-linking": "6.3.1",
+      "expo-status-bar": "1.12.1"
+    }
   }
 }
