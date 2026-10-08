@@ -72,21 +72,22 @@ if ($t -notmatch 'KotlinCompile') {
 }
 "sdk.dir=$($env:ANDROID_HOME -replace '\\','/')" | Set-Content "apps/mobile/android/local.properties" -Encoding Ascii
 
-# 4. Build.
+# 4. Build (release variant: embedded production JS, standalone - the debug
+# variant only loads JS from a dev server and cannot run on its own).
 Push-Location "apps/mobile/android"
-& ".\gradlew.bat" assembleDebug --console=plain
-if ($LASTEXITCODE -ne 0) { throw "Gradle assembleDebug failed - see output above" }
+& ".\gradlew.bat" assembleRelease --console=plain
+if ($LASTEXITCODE -ne 0) { throw "Gradle assembleRelease failed - see output above" }
 Pop-Location
 
 # 5. Verify + stage.
-$apk = "apps/mobile/android/app/build/outputs/apk/debug/app-debug.apk"
+$apk = "apps/mobile/android/app/build/outputs/apk/release/app-release.apk"
 $bt = "$env:ANDROID_HOME\build-tools\34.0.0"
 & "$bt\apksigner.bat" verify --print-certs $apk
 if ($LASTEXITCODE -ne 0) { throw "apksigner verification failed" }
 & "$bt\aapt.exe" dump badging $apk | Select-String -Pattern "^(package|launchable-activity)"
 $ver = (Get-Content "apps/mobile/app.json" | ConvertFrom-Json).expo.version
 New-Item -ItemType Directory -Path "dist-apk" -Force | Out-Null
-$out = "dist-apk/uplift-v$ver-debug.apk"
+$out = "dist-apk/uplift-v$ver-release.apk"
 Copy-Item $apk $out -Force
 Write-Output "SHA-256: $((Get-FileHash $out -Algorithm SHA256).Hash)"
 Write-Output "STAGED: $WorkRoot\$out"
