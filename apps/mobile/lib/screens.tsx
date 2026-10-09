@@ -104,6 +104,31 @@ async function shareUplift(u: Uplift) {
   } catch {}
 }
 
+// ---------- Welcome (first screen: journey promise + one next step) ----------
+export function WelcomeScreen({ onStart }: { onStart: () => void }) {
+  return (
+    <ScrollView contentContainerStyle={s.screen}>
+      <View style={[s.card, { backgroundColor: C.yellow }]}>
+        <Text style={s.h1}>Dan and Ejiro Uplift</Text>
+        <Text style={{ fontSize: 22, fontWeight: '800', color: C.ink }}>
+          A little encouragement can change your day.
+        </Text>
+        <Text>The right words. The right moment. Keep moving.</Text>
+        <Text style={s.sub}>You don't have to be down to need encouragement.</Text>
+      </View>
+      <View style={s.entry}>
+        <Text>🌅 Morning message — start the day with intention</Text>
+        <Text>🌤️ Help when life hits — a 2-tap rescue, plus one small action</Text>
+        <Text>🌙 Evening reflection — end with what you're proud of</Text>
+      </View>
+      <Pressable style={[s.primary, { backgroundColor: C.orange }]} onPress={onStart}>
+        <Text style={s.primaryT}>Get my first Uplift →</Text>
+      </Pressable>
+      <Text style={s.sub}>Free. Takes 2 minutes. No judgment, ever.</Text>
+    </ScrollView>
+  );
+}
+
 // ---------- Sprint A — Auth ----------
 export function AuthScreen({ onAuthed }: { onAuthed: () => void }) {
   const [email, setEmail] = useState('uplifter@test.com');
