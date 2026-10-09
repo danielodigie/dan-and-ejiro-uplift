@@ -71,6 +71,11 @@ if ($t -notmatch 'KotlinCompile') {
   Set-Content $rootGradle $t -NoNewline
 }
 "sdk.dir=$($env:ANDROID_HOME -replace '\\','/')" | Set-Content "apps/mobile/android/local.properties" -Encoding Ascii
+# d. Sync version into the prebuilt project (prebuild bakes these once).
+$appJson = Get-Content "apps/mobile/app.json" | ConvertFrom-Json
+$appGradle = "apps/mobile/android/app/build.gradle"
+(Get-Content $appGradle -Raw) -replace 'versionCode \d+', ("versionCode " + $appJson.expo.android.versionCode) -replace 'versionName "[^"]*"', ('versionName "' + $appJson.expo.version + '"') |
+  Set-Content $appGradle -NoNewline
 
 # 4. Build (release variant: embedded production JS, standalone - the debug
 # variant only loads JS from a dev server and cannot run on its own).
