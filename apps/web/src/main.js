@@ -98,8 +98,18 @@ document.getElementById('btnPacks').onclick = async () => {
     const el = document.getElementById('profile');
     el.innerHTML = (packs || []).map(p =>
       `<div><b>${p.locked ? '🔒' : '✅'} ${p.title}</b><br/>${p.tagline}<br/>` +
-      (p.locked ? `<button class="btn" data-unlock="${p.id}">Unlock (no charge)</button>` : '') + '</div>'
+      (p.locked ? `<button class="btn" data-pay="${p.id}">Pay ₦1,500 with Paystack</button> ` : '') +
+      (p.locked ? `<button class="btn" data-unlock="${p.id}">Unlock free (demo)</button>` : '') + '</div>'
     ).join('') || '(none)';
+    el.querySelectorAll('[data-pay]').forEach(b => b.onclick = async () => {
+      try {
+        const r = await req('/api/pay/initialize', { method: 'POST', body: JSON.stringify({ pack_id: b.dataset.pay }) });
+        if (r.alreadyOwned) { log('already owned — tap Show packs again'); return; }
+        if (!r.authorization_url) throw new Error('no payment link returned');
+        log('opening Paystack checkout…');
+        window.location.href = r.authorization_url;
+      } catch (e) { log(String(e)); }
+    });
     el.querySelectorAll('[data-unlock]').forEach(b => b.onclick = async () => {
       try { await req(`/api/packs/${encodeURIComponent(b.dataset.unlock)}/unlock`, { method: 'POST', body: '{}' }); log('unlocked — tap Show packs again'); }
       catch (e) { log(String(e)); }
@@ -154,5 +164,19 @@ if ('serviceWorker' in navigator) {
     log('installed');
   });
 }
+
+// Paystack return: ?paystack=callback&reference=XXX (or ?trxref=XXX).
+// Verify server-side; the server unlocks the pack only on real success.
+(async () => {
+  const q = new URLSearchParams(window.location.search);
+  const ref = q.get('reference') || q.get('trxref');
+  if (!ref) return;
+  try {
+    const v = await req(`/api/pay/verify/${encodeURIComponent(ref)}`, { method: 'GET' });
+    if (v.ok) log(`payment confirmed — ${v.pack} unlocked (premium). Tap Show packs.`);
+    else log('payment not confirmed yet: ' + (v.error || 'pending'));
+  } catch (e) { log(String(e)); }
+  window.history.replaceState({}, '', window.location.pathname);
+})();
 
 checkHealth();

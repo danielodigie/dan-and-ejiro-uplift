@@ -7,6 +7,7 @@ import { enhanceWithGemini, llmEnabled, llmStatusMasked } from './llm.js';
 import { sql } from 'drizzle-orm';
 import { profiles, checkins, goals, journal, social } from './routes.js';
 import { startJobs, presignPut, presignGet, crisisResponse, isCrisis } from './services.js';
+import { initializePackPayment, verifyPackPayment, paystackConfigured, PACK_PRICES_NGN } from './paystack.js';
 import uplifts from '../../../packages/content/uplifts.json' with { type: 'json' };
 import packsData from '../../../packages/content/packs.json' with { type: 'json' };
 
@@ -230,6 +231,62 @@ app.post('/api/packs/:id/unlock', async c => {
     await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${u.id}, 'pack_unlock', ${JSON.stringify({ pack: id })})`);
   } catch {}
   return c.json({ ok: true, tier: 'premium-stub', packs: merged });
+});
+// Real pack purchase via Paystack (server holds the secret; client only gets
+// a payment link). Test mode until live keys are set.
+app.get('/api/pay/status', async c => {
+  const u = await sessionUser(c);
+  if (!u) return c.json({ error: 'unauthorized' }, 401);
+  const key = (process.env.PAYSTACK_SECRET_KEY || '').trim();
+  return c.json({
+    configured: paystackConfigured(),
+    mode: key.startsWith('sk_live_') ? 'live' : key.startsWith('sk_test_') ? 'test' : 'unknown',
+    pricesNgn: PACK_PRICES_NGN,
+  });
+});
+app.post('/api/pay/initialize', async c => {
+  const u = await sessionUser(c);
+  if (!u) return c.json({ error: 'unauthorized' }, 401);
+  if (!paystackConfigured()) return c.json({ error: 'payments not configured' }, 503);
+  const b = await c.req.json().catch(() => ({}));
+  const packId = String((b as any).pack_id || (b as any).packId || '');
+  const pack = (packsData as any).packs.find((p: any) => p.id === packId);
+  if (!pack) return c.json({ error: 'unknown pack' }, 404);
+  const ent = await getEntitlements(u.id);
+  if (hasPack(ent, packId)) return c.json({ ok: true, alreadyOwned: true, tier: ent.tier, packs: ent.packs });
+  const email = (u as any).email;
+  if (!email) return c.json({ error: 'account has no email' }, 400);
+  try {
+    const init = await initializePackPayment({
+      packId,
+      email,
+      userId: u.id,
+      callbackBase: (process.env.FRONTEND_URL || '').split(',')[0]?.trim() || undefined,
+    });
+    try { await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${u.id}, 'pay_init', ${JSON.stringify({ pack: packId, reference: init.reference })})`); } catch {}
+    return c.json({ ok: true, ...init });
+  } catch (e: any) {
+    return c.json({ error: 'payment start failed', detail: String(e?.message || e).slice(0, 200) }, 502);
+  }
+});
+app.get('/api/pay/verify/:reference', async c => {
+  const u = await sessionUser(c);
+  if (!u) return c.json({ error: 'unauthorized' }, 401);
+  if (!paystackConfigured()) return c.json({ error: 'payments not configured' }, 503);
+  const reference = c.req.param('reference');
+  const v = await verifyPackPayment(reference, u.id);
+  if (!v.ok) {
+    try { await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${u.id}, 'pay_verify_fail', ${JSON.stringify({ reference, reason: (v as any).reason })})`); } catch {}
+    return c.json({ ok: false, error: (v as any).reason }, 402);
+  }
+  const current = await getEntitlements(u.id);
+  const merged = [...new Set([...(current.packs || []), v.packId])];
+  try {
+    await db.execute(sql`INSERT INTO entitlements (user_id, tier, packs) VALUES (${u.id}, 'premium', ${JSON.stringify(merged)})
+      ON CONFLICT (user_id) DO UPDATE SET tier='premium', packs=EXCLUDED.packs`);
+    await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${u.id}, 'pack_unlock', ${JSON.stringify({ pack: v.packId, method: 'paystack', reference: v.reference, amountNgn: v.amountNgn })}`);
+  } catch {}
+  return c.json({ ok: true, tier: 'premium', packs: merged, pack: v.packId, amountNgn: v.amountNgn });
 });
 // 7-day journey, style-matched (premium). Free users get 402 + paywall payload.
 app.get('/api/packs/:id/days', async c => {
