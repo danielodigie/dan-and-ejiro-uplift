@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { View, Text, Pressable, TextInput, ScrollView, Share, StyleSheet } from 'react-native';
+import { View, Text, Pressable, TextInput, ScrollView, Share, StyleSheet, Linking } from 'react-native';
 import { api, Uplift, Prefs, OFFLINE_UPLIFT } from '../lib/api';
 
 // Bright sharp theme (matches design.html v2): white bg, ink borders, orange/blue/yellow solids, no gradients.
@@ -389,10 +389,10 @@ export function PaywallSheet({ title, tagline, priceStub, onUnlock, onRestore, o
     <View style={s.paywall}>
       <Text style={s.h1}>🔒 {title}</Text>
       <Text>{tagline}</Text>
-      <Text style={s.sub}>Premium perks ($1 test): 7-day style-matched journey • Guided reflections • Deeper progress insights.</Text>
+      <Text style={s.sub}>Premium perks: 7-day style-matched journey • Guided reflections • Deeper progress insights.</Text>
       <Text style={s.sub}>{priceStub}</Text>
       <Text style={s.sub}>Free stays free: Daily Uplift, check-ins, categories, sharing, basic goals.</Text>
-      <Pressable style={s.primary} onPress={onUnlock}><Text style={s.primaryT}>Unlock (stub — no charge)</Text></Pressable>
+      <Pressable style={s.primary} onPress={onUnlock}><Text style={s.primaryT}>Pay with Paystack</Text></Pressable>
       <View style={s.row}>
         <Pressable style={s.ghost} onPress={onRestore}><Text>Restore</Text></Pressable>
         <Pressable style={s.ghost} onPress={onClose}><Text>Not now</Text></Pressable>
@@ -426,6 +426,8 @@ export function ProfileTab({ prefs, onEdit, onSignOut }: { prefs: Prefs; onEdit:
   const [reflection, setReflection] = useState<any | null>(null);
   const [insights, setInsights] = useState<any | null>(null);
   const [insightsFull, setInsightsFull] = useState(false);
+  const [payRef, setPayRef] = useState('');
+  const [payMsg, setPayMsg] = useState('');
   const stylesCsv = (prefs.styles || []).join(',');
   const refreshEnt = async () => {
     const e: any = await api.entitlements().catch(() => ({ tier: 'free', packs: [] }));
@@ -453,14 +455,43 @@ export function ProfileTab({ prefs, onEdit, onSignOut }: { prefs: Prefs; onEdit:
       }
     }
   };
-  const unlock = async () => {
+  // Real Paystack purchase: open checkout in the browser, then verify on return.
+  // (The old stub unlock is gone from this UI — real money only.)
+  const payForPack = async () => {
     if (!paywall && !activePack) return;
     const id = paywall?.pack || activePack;
-    await api.unlockPack(id).catch(() => {});
-    api.event('pack_unlock', { pack: id }).catch(() => {});
-    setPaywall(null);
-    await refreshEnt().catch(() => {});
-    await openPack(id).catch(() => {});
+    setPayMsg('');
+    try {
+      const r: any = await api.payInit(id);
+      if (r?.alreadyOwned) {
+        setPaywall(null);
+        await refreshEnt().catch(() => {});
+        await openPack(id).catch(() => {});
+        return;
+      }
+      if (!r?.authorization_url) throw new Error('no payment link returned');
+      setPayRef(String(r.reference || ''));
+      api.event('pay_init', { pack: id }).catch(() => {});
+      await Linking.openURL(r.authorization_url);
+      setPayMsg('Complete the payment in your browser, then come back and tap Verify below.');
+    } catch (e: any) { setPayMsg(e.message || 'Payment could not start — check connection.'); }
+  };
+  const verifyPayment = async () => {
+    if (!payRef) return;
+    setPayMsg('Confirming payment…');
+    try {
+      const v: any = await api.payVerify(payRef);
+      if (v?.ok) {
+        setPayMsg('Payment confirmed — pack unlocked.');
+        setPayRef('');
+        setPaywall(null);
+        await refreshEnt().catch(() => {});
+        const id = paywall?.pack || activePack;
+        if (id) await openPack(id).catch(() => {});
+      } else {
+        setPayMsg('Not confirmed yet — finish paying first, then tap Verify again.');
+      }
+    } catch (e: any) { setPayMsg('Not confirmed yet — finish paying first, then tap Verify again.'); }
   };
   const restore = async () => {
     const e: any = await api.restore().catch(() => null);
@@ -509,7 +540,14 @@ export function ProfileTab({ prefs, onEdit, onSignOut }: { prefs: Prefs; onEdit:
           <Pressable style={s.primary} onPress={() => openPack(p.id)}><Text style={s.primaryT}>{p.locked ? 'View pack' : 'Open 7-day journey'}</Text></Pressable>
         </View>
       ))}
-      {paywall ? <PaywallSheet title={paywall.title} tagline={paywall.tagline} priceStub={paywall.priceStub} onUnlock={unlock} onRestore={restore} onClose={() => setPaywall(null)} /> : null}
+      {paywall ? <PaywallSheet title={paywall.title} tagline={paywall.tagline} priceStub="₦1,500 one-time • Paystack (test mode)" onUnlock={payForPack} onRestore={restore} onClose={() => setPaywall(null)} /> : null}
+      {payRef ? (
+        <View style={s.paywall}>
+          <Text style={{ fontWeight: '800' }}>Almost yours — one step left</Text>
+          <Text>{payMsg || 'Complete the payment in your browser, then come back and tap Verify below.'}</Text>
+          <Pressable style={s.primary} onPress={verifyPayment}><Text style={s.primaryT}>I've paid — Verify</Text></Pressable>
+        </View>
+      ) : payMsg ? <Text style={s.sub}>{payMsg}</Text> : null}
       {days.length > 0 ? (
         <View style={{ gap: 8 }}>
           <Text style={s.label}>Your 7-day journey (style-matched: {stylesCsv})</Text>

@@ -162,6 +162,13 @@ export const api = {
     req('/api/entitlements', { method: 'POST', body: JSON.stringify({ tier, packs }) }).catch(() => ({ ok: true })),
   restore: () => req('/api/entitlements/restore', { method: 'POST', body: JSON.stringify({}) }).catch(() => ({ tier: 'free', packs: [] })),
 
+  // Real payments via Paystack (server holds the secret; app only opens links)
+  payStatus: () => req('/api/pay/status', { method: 'GET' }).catch(() => ({ configured: false })),
+  payInit: (packId: string) =>
+    req('/api/pay/initialize', { method: 'POST', body: JSON.stringify({ pack_id: packId }) }),
+  payVerify: (reference: string) =>
+    req(`/api/pay/verify/${encodeURIComponent(reference)}`, { method: 'GET' }),
+
   // Phase 5 — premium packs, journeys, guided reflections, insights
   packs: () => req('/api/packs', { method: 'GET' }).catch(() => []),
   packDays: (id: string, stylesCsv = '') =>
