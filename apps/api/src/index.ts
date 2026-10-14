@@ -19,6 +19,14 @@ const frontendOrigins = (process.env.FRONTEND_URL || process.env.MOBILE_URL || '
 app.use('*', frontendOrigins.length
   ? cors({ origin: frontendOrigins, credentials: true })
   : cors({ origin: '*' }));
+// Custom auth-adjacent routes MUST sit above the Better Auth wildcard below:
+// Hono matches in registration order, so the wildcard would swallow them.
+// Auth methods available on this server (open; presence flags only, no secrets)
+app.get('/api/auth/methods', async c => {
+  const sms = !!((process.env.TERMII_API_KEY || '').trim());
+  const mail = !!((process.env.RESEND_API_KEY || '').trim());
+  return c.json({ email: true, phone: sms, passwordResetEmail: mail });
+});
 app.on(['GET', 'POST'], '/api/auth/*', c => auth.handler(c.req.raw));
 
 app.route('/api/profiles', profiles);
@@ -135,13 +143,6 @@ app.post('/api/request-password-reset', async c => {
     }
   } catch {}
   return c.json({ ok: true });
-});
-
-// Auth methods available on this server (open; presence flags only, no secrets)
-app.get('/api/auth/methods', async c => {
-  const sms = !!((process.env.TERMII_API_KEY || '').trim());
-  const mail = !!((process.env.RESEND_API_KEY || '').trim());
-  return c.json({ email: true, phone: sms, passwordResetEmail: mail });
 });
 
 // Set a login password on the current (phone-verified) account.
