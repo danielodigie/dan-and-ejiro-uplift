@@ -129,32 +129,116 @@ export function WelcomeScreen({ onStart }: { onStart: () => void }) {
   );
 }
 
-// ---------- Sprint A — Auth ----------
+// ---------- Sprint A — Auth (email tab + phone-number tab + forgot password) ----------
 export function AuthScreen({ onAuthed }: { onAuthed: () => void }) {
-  const [email, setEmail] = useState('uplifter@test.com');
-  const [password, setPassword] = useState('uplift123');
+  const [tab, setTab] = useState<'email' | 'phone'>('email');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [phone, setPhone] = useState('');
+  const [phonePw, setPhonePw] = useState('');
+  const [code, setCode] = useState('');
+  const [codeSent, setCodeSent] = useState(false);
+  const [forgot, setForgot] = useState(false);
+  const [msg, setMsg] = useState('');
   const [err, setErr] = useState('');
   const go = async (mode: 'in' | 'up') => {
-    setErr('');
+    setErr(''); setMsg('');
     try {
       if (mode === 'in') await api.signIn(email.trim(), password);
       else await api.signUp(email.trim(), password, email.split('@')[0]);
       api.event('auth', { mode }).catch(() => {});
       onAuthed();
-    } catch (e: any) { setErr(e.message || 'Auth failed — is the API on :3000?'); }
+    } catch (e: any) { setErr(e.message || 'Auth failed — check connection.'); }
+  };
+  const sendCode = async () => {
+    setErr(''); setMsg('');
+    try {
+      await api.phoneSendOtp(phone.trim());
+      setCodeSent(true);
+      setMsg('Code sent by SMS — type it below.');
+    } catch (e: any) { setErr(e.message || 'Could not send code.'); }
+  };
+  const verifyPhone = async () => {
+    setErr(''); setMsg('');
+    try {
+      await api.phoneVerify(phone.trim(), code.trim(), { name: phone.trim() });
+      if (phonePw.trim().length >= 8) {
+        await api.phoneSetPassword(phonePw.trim());
+      }
+      api.event('auth', { mode: 'phone' }).catch(() => {});
+      onAuthed();
+    } catch (e: any) { setErr(e.message || 'Wrong code — try again.'); }
+  };
+  const phoneLogin = async () => {
+    setErr(''); setMsg('');
+    try {
+      await api.phoneSignIn(phone.trim(), phonePw);
+      api.event('auth', { mode: 'phone-in' }).catch(() => {});
+      onAuthed();
+    } catch (e: any) { setErr(e.message || 'Wrong number or password.'); }
+  };
+  const forgotGo = async () => {
+    setErr(''); setMsg('');
+    try {
+      await api.requestPasswordReset(email.trim());
+      setMsg('If that email exists, a reset link is on its way. Open it, set a new password, then sign in here.');
+    } catch (e: any) { setErr(e.message || 'Could not send reset link.'); }
   };
   return (
     <ScrollView contentContainerStyle={s.screen}>
       <Text style={s.h1}>Dan and Ejiro Uplift</Text>
       <Text>A little encouragement can change your day.</Text>
-      <Text style={s.label}>Email</Text>
-      <TextInput style={s.input} value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" />
-      <Text style={s.label}>Password</Text>
-      <TextInput style={s.input} value={password} onChangeText={setPassword} secureTextEntry />
-      {err ? <Text style={s.err}>{err}</Text> : null}
-      <Pressable style={s.primary} onPress={() => go('in')}><Text style={s.primaryT}>Sign in</Text></Pressable>
-      <Pressable style={s.ghost} onPress={() => go('up')}><Text>Create account</Text></Pressable>
-      <Text style={s.sub}>Local-first MVP: runs on your device + LAN. No cloud needed.</Text>
+      <View style={s.row}>
+        <Pressable style={[s.ghost, tab === 'email' && { backgroundColor: '#FFC400' }]} onPress={() => { setTab('email'); setErr(''); setMsg(''); setForgot(false); }}><Text>Email</Text></Pressable>
+        <Pressable style={[s.ghost, tab === 'phone' && { backgroundColor: '#FFC400' }]} onPress={() => { setTab('phone'); setErr(''); setMsg(''); setCodeSent(false); }}><Text>Phone</Text></Pressable>
+      </View>
+      {tab === 'email' ? (
+        <View style={{ gap: 0 }}>
+          <Text style={s.label}>Email</Text>
+          <TextInput style={s.input} value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" placeholder="you@example.com" />
+          <Text style={s.label}>Password</Text>
+          <TextInput style={s.input} value={password} onChangeText={setPassword} secureTextEntry placeholder="8+ characters" />
+          {err ? <Text style={s.err}>{err}</Text> : null}
+          {msg ? <Text style={s.sub}>{msg}</Text> : null}
+          {!forgot ? (
+            <View style={{ gap: 12 }}>
+              <Pressable style={s.primary} onPress={() => go('in')}><Text style={s.primaryT}>Sign in</Text></Pressable>
+              <Pressable style={s.ghost} onPress={() => go('up')}><Text>Create account</Text></Pressable>
+              <Pressable onPress={() => { setForgot(true); setErr(''); setMsg(''); }}><Text style={s.link}>Forgot password?</Text></Pressable>
+            </View>
+          ) : (
+            <View style={{ gap: 12 }}>
+              <Text style={s.sub}>Type your email above, then tap below. Open the link in your email (it opens our website), set a new password, then come back and sign in.</Text>
+              <Pressable style={s.primary} onPress={forgotGo}><Text style={s.primaryT}>Send reset link</Text></Pressable>
+              <Pressable onPress={() => setForgot(false)}><Text style={s.link}>Back to sign in</Text></Pressable>
+            </View>
+          )}
+        </View>
+      ) : (
+        <View style={{ gap: 0 }}>
+          <Text style={s.label}>Phone number (no email needed)</Text>
+          <TextInput style={s.input} value={phone} onChangeText={setPhone} keyboardType="phone-pad" placeholder="+234803..." />
+          <Text style={s.label}>Create password (8+ characters)</Text>
+          <TextInput style={s.input} value={phonePw} onChangeText={setPhonePw} secureTextEntry placeholder="Same password for future sign-ins" />
+          {err ? <Text style={s.err}>{err}</Text> : null}
+          {msg ? <Text style={s.sub}>{msg}</Text> : null}
+          {!codeSent ? (
+            <View style={{ gap: 12 }}>
+              <Pressable style={s.primary} onPress={sendCode}><Text style={s.primaryT}>Text me a code</Text></Pressable>
+              <Text style={s.sub}>Already have a phone account? Type number + password above, then:</Text>
+              <Pressable style={s.ghost} onPress={phoneLogin}><Text>Sign in with phone</Text></Pressable>
+            </View>
+          ) : (
+            <View style={{ gap: 12 }}>
+              <Text style={s.label}>6-digit code from SMS</Text>
+              <TextInput style={s.input} value={code} onChangeText={setCode} keyboardType="number-pad" placeholder="123456" />
+              <Pressable style={s.primary} onPress={verifyPhone}><Text style={s.primaryT}>Verify & continue</Text></Pressable>
+              <Pressable onPress={sendCode}><Text style={s.link}>Resend code</Text></Pressable>
+            </View>
+          )}
+        </View>
+      )}
+      <Text style={s.sub}>Your account works on this app and the website.</Text>
     </ScrollView>
   );
 }

@@ -45,9 +45,24 @@
   <div class="card" id="auth">
     <h2>2. Sign in / Sign up</h2>
     <input id="email" type="email" placeholder="Email" />
-    <input id="password" type="password" placeholder="Password" />
+    <input id="password" type="password" placeholder="Password (8+ characters)" />
     <button class="btn" id="btnSignup">Sign up</button>
     <button class="btn" id="btnSignin">Sign in</button>
+    <p><a href="#" id="linkForgot">Forgot password?</a></p>
+    <div id="resetBox" style="display:none">
+      <p>Set a new password (from your email link):</p>
+      <input id="newPassword" type="password" placeholder="New password (8+ characters)" />
+      <button class="btn" id="btnResetGo">Set new password</button>
+    </div>
+    <h3>No email? Use your phone number</h3>
+    <input id="phone" type="tel" placeholder="+234803..." />
+    <input id="phonePw" type="password" placeholder="Create password (8+ characters)" />
+    <button class="btn" id="btnPhoneCode">Text me a code</button>
+    <div id="phoneCodeBox" style="display:none">
+      <input id="phoneCode" placeholder="6-digit code from SMS" />
+      <button class="btn" id="btnPhoneVerify">Verify & continue</button>
+    </div>
+    <p>Already have a phone account? Fill number + password above, then <button class="btn" id="btnPhoneSignin">Sign in with phone</button></p>
   </div>
 
   <div class="card" id="today">

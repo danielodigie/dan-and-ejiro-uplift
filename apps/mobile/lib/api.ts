@@ -81,6 +81,17 @@ export const api = {
     req('/api/auth/sign-in/email', { method: 'POST', body: JSON.stringify({ email, password }) }),
   signOut: () => req('/api/auth/sign-out', { method: 'POST', body: JSON.stringify({}) }),
   session: () => req('/api/auth/get-session', { method: 'GET' }).catch(() => null),
+  // Phone login (Termii SMS code) + email password reset (Resend link)
+  phoneSendOtp: (phoneNumber: string) =>
+    req('/api/auth/phone-number/send-otp', { method: 'POST', body: JSON.stringify({ phoneNumber }) }),
+  phoneVerify: (phoneNumber: string, code: string, extra: Record<string, any> = {}) =>
+    req('/api/auth/phone-number/verify', { method: 'POST', body: JSON.stringify({ phoneNumber, code, ...extra }) }),
+  phoneSignIn: (phoneNumber: string, password: string) =>
+    req('/api/auth/sign-in/phone-number', { method: 'POST', body: JSON.stringify({ phoneNumber, password }) }),
+  phoneSetPassword: (password: string) =>
+    req('/api/phone/set-password', { method: 'POST', body: JSON.stringify({ password }) }),
+  requestPasswordReset: (email: string) =>
+    req('/api/request-password-reset', { method: 'POST', body: JSON.stringify({ email }) }).catch(() => ({ ok: true })),
 
   // Sprint A — profile (PUT canonical, POST alias for compat)
   profile: () => req('/api/profiles', { method: 'GET' }).catch(() => null),

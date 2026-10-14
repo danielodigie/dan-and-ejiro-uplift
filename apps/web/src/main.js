@@ -40,6 +40,55 @@ document.getElementById('btnSignin').onclick = async () => {
   try { await req('/api/auth/sign-in/email', { method: 'POST', body: JSON.stringify({ email, password }) }); log('signed in'); }
   catch (e) { log(String(e)); }
 };
+document.getElementById('linkForgot').onclick = async (e) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  if (!email.includes('@')) { log('type your email first'); return; }
+  try { await req('/api/request-password-reset', { method: 'POST', body: JSON.stringify({ email }) }); log('if that email exists, a reset link is on its way — open it, then set a new password below'); }
+  catch (err) { log(String(err)); }
+};
+// Email reset link lands here as ?reset=1&token=XXX (API-validated first).
+{
+  const q = new URLSearchParams(window.location.search);
+  const token = q.get('token');
+  if (q.get('reset') !== null && token) {
+    document.getElementById('resetBox').style.display = '';
+    document.getElementById('btnResetGo').onclick = async () => {
+      const pw = document.getElementById('newPassword').value;
+      if (pw.length < 8) { log('new password must be 8+ characters'); return; }
+      try {
+        await req(`/api/auth/reset-password?token=${encodeURIComponent(token)}`, { method: 'POST', body: JSON.stringify({ newPassword: pw }) });
+        log('password updated — sign in above with the new password');
+        window.history.replaceState({}, '', window.location.pathname);
+      } catch (err) { log(String(err)); }
+    };
+  }
+}
+document.getElementById('btnPhoneCode').onclick = async () => {
+  const phoneNumber = document.getElementById('phone').value.trim();
+  if (!phoneNumber) { log('type your phone number first, e.g. +234803...'); return; }
+  try { await req('/api/auth/phone-number/send-otp', { method: 'POST', body: JSON.stringify({ phoneNumber }) }); document.getElementById('phoneCodeBox').style.display = ''; log('code sent by SMS — type it below'); }
+  catch (e) { log(String(e)); }
+};
+document.getElementById('btnPhoneVerify').onclick = async () => {
+  const phoneNumber = document.getElementById('phone').value.trim();
+  const code = document.getElementById('phoneCode').value.trim();
+  const password = document.getElementById('phonePw').value;
+  try {
+    await req('/api/auth/phone-number/verify', { method: 'POST', body: JSON.stringify({ phoneNumber, code, name: phoneNumber }) });
+    if (password.trim().length >= 8) {
+      try { await req('/api/phone/set-password', { method: 'POST', body: JSON.stringify({ password: password.trim() }) }); }
+      catch (e) { log('signed in, but password was not saved: ' + String(e)); return; }
+    }
+    log('phone verified — signed in' + (password.trim() ? ' (password saved for next time)' : ' (no password set — use code to sign in next time)'));
+  } catch (e) { log(String(e)); }
+};
+document.getElementById('btnPhoneSignin').onclick = async () => {
+  const phoneNumber = document.getElementById('phone').value.trim();
+  const password = document.getElementById('phonePw').value;
+  try { await req('/api/auth/sign-in/phone-number', { method: 'POST', body: JSON.stringify({ phoneNumber, password }) }); log('signed in with phone'); }
+  catch (e) { log(String(e)); }
+};
 document.getElementById('btnToday').onclick = async () => {
   const mood = document.getElementById('mood').value;
   try {

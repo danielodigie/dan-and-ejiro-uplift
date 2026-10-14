@@ -120,6 +120,59 @@ app.get('/api/llm/status', async c => {
   return c.json(llmStatusMasked());
 });
 
+// Password-reset request with server-chosen return URL (always ok:true so
+// emails can't be probed). The emailed link bounces through the API, which
+// validates the token, then lands on the website reset card with ?token=.
+app.post('/api/request-password-reset', async c => {
+  const b = await c.req.json().catch(() => ({}));
+  const email = String((b as any).email || '').trim();
+  try {
+    if (email) {
+      const site = (process.env.FRONTEND_URL || '').split(',')[0]?.trim();
+      await (auth.api as any).requestPasswordReset({
+        body: { email, redirectTo: site ? `${site.replace(/\/$/, '')}/?reset=1` : undefined },
+      });
+    }
+  } catch {}
+  return c.json({ ok: true });
+});
+
+// Auth methods available on this server (open; presence flags only, no secrets)
+app.get('/api/auth/methods', async c => {
+  const sms = !!((process.env.TERMII_API_KEY || '').trim());
+  const mail = !!((process.env.RESEND_API_KEY || '').trim());
+  return c.json({ email: true, phone: sms, passwordResetEmail: mail });
+});
+
+// Set a login password on the current (phone-verified) account.
+// The OTP verify step signs the user in but creates no password; this hashes
+// with Better Auth's own hasher and stores a credential account row, so
+// /sign-in/phone-number works afterwards.
+app.post('/api/phone/set-password', async c => {
+  const u = await sessionUser(c);
+  if (!u) return c.json({ error: 'unauthorized' }, 401);
+  const b = await c.req.json().catch(() => ({}));
+  const password = String((b as any).password || '');
+  if (password.length < 8) return c.json({ error: 'password must be 8+ characters' }, 400);
+  try {
+    const r: any = await db.execute(sql`SELECT phone_number, phone_number_verified FROM "user" WHERE id=${u.id}`);
+    const row = r.rows?.[0];
+    if (!row?.phone_number) return c.json({ error: 'no phone number on this account' }, 400);
+    const ctx: any = await (auth as any).$context;
+    const hash = await ctx.password.hash(password);
+    const { randomUUID } = await import('node:crypto');
+    // One credential row per user (Better Auth looks it up by user id), so
+    // this sets the account password for BOTH phone and email login.
+    await db.execute(sql`DELETE FROM account WHERE "userId"=${u.id} AND "providerId"='credential'`);
+    await db.execute(sql`INSERT INTO account (id, "accountId", "providerId", "userId", password, "createdAt", "updatedAt")
+      VALUES (${randomUUID()}, ${u.id}, 'credential', ${u.id}, ${hash}, NOW(), NOW())`);
+    try { await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${u.id}, 'phone_password_set', ${JSON.stringify({})})`); } catch {}
+    return c.json({ ok: true });
+  } catch (e: any) {
+    return c.json({ error: 'could not set password' }, 500);
+  }
+});
+
 app.get('/api/categories', async c => c.json([
   'hope','confidence','motivation','strength','courage','success','failure',
   'relationships','career','money','purpose','self-belief','gratitude',

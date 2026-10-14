@@ -21,3 +21,7 @@ CREATE TABLE IF NOT EXISTS verification (
   "expiresAt" TIMESTAMPTZ NOT NULL,
   "createdAt" TIMESTAMPTZ DEFAULT now(), "updatedAt" TIMESTAMPTZ DEFAULT now()
 );
+-- Phone-number login (Better Auth phoneNumber plugin). Idempotent: safe on
+-- databases created before this (existing rows untouched, new users fill it).
+ALTER TABLE "user" ADD COLUMN IF NOT EXISTS "phoneNumber" TEXT UNIQUE;
+ALTER TABLE "user" ADD COLUMN IF NOT EXISTS "phoneNumberVerified" BOOLEAN DEFAULT FALSE;
