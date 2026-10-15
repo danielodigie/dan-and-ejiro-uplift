@@ -1,6 +1,20 @@
 // Minimal web client for the Uplift API (same REST surface as apps/mobile/lib/api.ts).
 // API base is injected at Netlify build time via VITE_API_URL.
 const API_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000').replace(/\/$/, '');
+
+// Bundled uplift photos (offline-first) — mirrors packages/content/images.json.
+const UPLIFT_IMAGES = {
+  hope: 'sunrise-field.jpg', confidence: 'mountain-peak.jpg', motivation: 'field-sunset.jpg',
+  strength: 'mountain-lake.jpg', courage: 'ocean-wave.jpg', success: 'foggy-hills.jpg',
+  failure: 'forest-road.jpg', relationships: 'canoe-lake.jpg', career: 'lake-tahoe.jpg',
+  money: 'golden-field.jpg', purpose: 'landscape-road.jpg', 'self-belief': 'mountain-peak.jpg',
+  gratitude: 'field-sunset.jpg', discipline: 'beach.jpg', leadership: 'mountain-lake.jpg',
+  faith: 'sky-sunrise.jpg', family: 'canoe-lake.jpg', growth: 'forest-road.jpg',
+};
+const upliftImg = (u) => {
+  const f = (u && UPLIFT_IMAGES[u.category]) || 'sunrise-field.jpg';
+  return `<img src="images/${f}" alt="" style="width:100%;border-radius:12px;border:3px solid #111" onerror="this.remove()">`;
+};
 document.getElementById('apiUrl').textContent = API_URL;
 
 const log = (m) => { document.getElementById('log').textContent += m + '\n'; };
@@ -86,7 +100,7 @@ document.getElementById('btnToday').onclick = async () => {
   try {
     const u = await req(`/api/uplifts/today?mood=${encodeURIComponent(mood)}`);
     document.getElementById('uplift').innerHTML =
-      `<h3>${u.greeting || ''}</h3><p>${u.body || ''}</p><p><b>Action:</b> ${u.action || u.action_text || ''}</p><small>source: ${u.source || ''}</small>`;
+      `${upliftImg(u)}<h3>${u.greeting || ''}</h3><p>${u.body || ''}</p><p><b>Action:</b> ${u.action || u.action_text || ''}</p><small>source: ${u.source || ''}</small>`;
   } catch (e) { log(String(e)); }
 };
 document.getElementById('btnCheckin').onclick = async () => {

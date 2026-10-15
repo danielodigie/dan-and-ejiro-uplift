@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import { View, Text, Pressable, TextInput, ScrollView, Share, StyleSheet, Linking } from 'react-native';
+import { View, Text, Pressable, TextInput, ScrollView, Share, StyleSheet, Linking, Image } from 'react-native';
 import { api, Uplift, Prefs, OFFLINE_UPLIFT } from '../lib/api';
+import { imageForUplift } from './images';
 
 // Bright sharp theme (matches design.html v2): white bg, ink borders, orange/blue/yellow solids, no gradients.
 export const C = { bg: '#FFFFFF', ink: '#111111', orange: '#FF4D00', blue: '#0B5CFF', yellow: '#FFC400', teal: '#00C2A8', grey: '#F2F2F2' };
@@ -30,8 +31,10 @@ export function UpliftCard({ u, onSave, onLike, onAnother, onReflect, onAction, 
       </View>
     );
   }
+  const photo = imageForUplift(u);
   return (
     <View style={s.card}>
+      {photo ? <Image source={photo} style={s.photo} resizeMode="cover" /> : null}
       <Text style={s.greet}>{u.greeting}</Text>
       <Text style={s.msg}>{u.body}</Text>
       {(u as any).scripture ? <Text style={s.script}>{(u as any).scripture}</Text> : null}
@@ -661,6 +664,7 @@ const s = StyleSheet.create({
   link: { color: C.blue, fontWeight: '700' },
   input: { borderWidth: 3, borderColor: C.ink, borderRadius: 12, padding: 12, backgroundColor: '#fff', fontSize: 16 },
   card: { backgroundColor: C.yellow, borderWidth: 3, borderColor: C.ink, borderRadius: 18, padding: 20, gap: 10 },
+  photo: { width: '100%', height: 180, borderRadius: 12, borderWidth: 3, borderColor: C.ink },
   greet: { backgroundColor: C.ink, color: '#fff', fontWeight: '800', paddingHorizontal: 12, paddingVertical: 4, borderRadius: 999, alignSelf: 'flex-start', fontSize: 12 },
   msg: { fontSize: 22, fontWeight: '700', color: C.ink },
   script: { fontStyle: 'italic', color: C.ink },

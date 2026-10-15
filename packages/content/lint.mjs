@@ -41,6 +41,15 @@ for (const u of uplifts) cats[u.category] = (cats[u.category] || 0) + 1;
 const missing = taxonomy.categories.filter(c => !cats[c]);
 const greetingVariants = uplifts.reduce((n, u) => n + (u.greetings?.length || 1), 0);
 
+// Every category needs a bundled photo (see images.json + IMAGES.md).
+const images = JSON.parse(fs.readFileSync(path.join(__dir, 'images.json'), 'utf8'));
+for (const c of taxonomy.categories) {
+  const f = images[c];
+  if (!f) errors.push(`category ${c}: no photo mapped in images.json`);
+  else if (!fs.existsSync(path.join(__dir, '..', '..', 'apps', 'web', 'public', 'images', f))) errors.push(`category ${c}: missing web photo ${f}`);
+  else if (!fs.existsSync(path.join(__dir, '..', '..', 'apps', 'mobile', 'assets', 'uplifts', f))) errors.push(`category ${c}: missing mobile photo ${f}`);
+}
+
 console.log(`Seeds: ${uplifts.length} | Greeting variants: ${greetingVariants} | Faith: ${faithCount}`);
 console.log('Per-category:', JSON.stringify(cats));
 if (missing.length) console.log('Missing categories:', missing.join(', '));

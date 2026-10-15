@@ -1,0 +1,21 @@
+{
+  "_note": "One nature photo per encouragement category (13 photos, ~1MB, bundled offline in web + mobile). Photos: Unsplash CDN (free license), vendored - see IMAGES.md.",
+  "hope": "sunrise-field.jpg",
+  "confidence": "mountain-peak.jpg",
+  "motivation": "field-sunset.jpg",
+  "strength": "mountain-lake.jpg",
+  "courage": "ocean-wave.jpg",
+  "success": "foggy-hills.jpg",
+  "failure": "forest-road.jpg",
+  "relationships": "canoe-lake.jpg",
+  "career": "lake-tahoe.jpg",
+  "money": "golden-field.jpg",
+  "purpose": "landscape-road.jpg",
+  "self-belief": "mountain-peak.jpg",
+  "gratitude": "field-sunset.jpg",
+  "discipline": "beach.jpg",
+  "leadership": "mountain-lake.jpg",
+  "faith": "sky-sunrise.jpg",
+  "family": "canoe-lake.jpg",
+  "growth": "forest-road.jpg"
+}
