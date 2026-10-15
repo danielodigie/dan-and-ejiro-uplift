@@ -64,23 +64,15 @@ document.getElementById('linkForgot').onclick = async (e) => {
     };
   }
 }
-document.getElementById('btnPhoneCode').onclick = async () => {
+document.getElementById('btnPhoneSignup').onclick = async () => {
   const phoneNumber = document.getElementById('phone').value.trim();
-  if (!phoneNumber) { log('type your phone number first, e.g. +234803...'); return; }
-  try { await req('/api/auth/phone-number/send-otp', { method: 'POST', body: JSON.stringify({ phoneNumber }) }); document.getElementById('phoneCodeBox').style.display = ''; log('code sent by SMS — type it below'); }
-  catch (e) { log(String(e)); }
-};
-document.getElementById('btnPhoneVerify').onclick = async () => {
-  const phoneNumber = document.getElementById('phone').value.trim();
-  const code = document.getElementById('phoneCode').value.trim();
   const password = document.getElementById('phonePw').value;
+  if (!phoneNumber) { log('type your phone number first, e.g. 0803...'); return; }
+  if (password.trim().length < 8) { log('password must be 8+ characters'); return; }
   try {
-    await req('/api/auth/phone-number/verify', { method: 'POST', body: JSON.stringify({ phoneNumber, code, name: phoneNumber }) });
-    if (password.trim().length >= 8) {
-      try { await req('/api/phone/set-password', { method: 'POST', body: JSON.stringify({ password: password.trim() }) }); }
-      catch (e) { log('signed in, but password was not saved: ' + String(e)); return; }
-    }
-    log('phone verified — signed in' + (password.trim() ? ' (password saved for next time)' : ' (no password set — use code to sign in next time)'));
+    await req('/api/phone/signup', { method: 'POST', body: JSON.stringify({ phoneNumber, password: password.trim() }) });
+    await req('/api/auth/sign-in/phone-number', { method: 'POST', body: JSON.stringify({ phoneNumber, password: password.trim() }) });
+    log('phone account created — signed in');
   } catch (e) { log(String(e)); }
 };
 document.getElementById('btnPhoneSignin').onclick = async () => {

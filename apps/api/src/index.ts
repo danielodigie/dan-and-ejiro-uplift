@@ -145,6 +145,37 @@ app.post('/api/request-password-reset', async c => {
   return c.json({ ok: true });
 });
 
+// Direct phone signup (no SMS needed): number + password. Numbers are stored
+// unverified until an SMS provider is configured; nothing of value is tied
+// to the number itself, so this is safe for beta. Uses the same credential
+// shape as email signup, so /sign-in/phone-number works right away.
+app.post('/api/phone/signup', async c => {
+  const b = await c.req.json().catch(() => ({}));
+  const { normalizePhone } = await import('./notify.js');
+  const phone = normalizePhone(String((b as any).phoneNumber || ''));
+  const password = String((b as any).password || '');
+  const name = String((b as any).name || phone || 'Uplifter').slice(0, 60);
+  if (!phone) return c.json({ error: 'enter a valid phone number, e.g. +234803...' }, 400);
+  if (password.length < 8) return c.json({ error: 'password must be 8+ characters' }, 400);
+  try {
+    const exists: any = await db.execute(sql`SELECT id FROM "user" WHERE "phoneNumber"=${phone} LIMIT 1`);
+    if (exists.rows?.length) return c.json({ error: 'number already registered — sign in instead' }, 409);
+    const { randomUUID } = await import('node:crypto');
+    const id = randomUUID();
+    const tempEmail = `${phone.replace(/\D/g, '')}@phone.uplift.local`;
+    const ctx: any = await (auth as any).$context;
+    const hash = await ctx.password.hash(password);
+    await db.execute(sql`INSERT INTO "user" (id, name, email, "emailVerified", "phoneNumber", "phoneNumberVerified", "createdAt", "updatedAt")
+      VALUES (${id}, ${name}, ${tempEmail}, false, ${phone}, false, NOW(), NOW())`);
+    await db.execute(sql`INSERT INTO account (id, "accountId", "providerId", "userId", password, "createdAt", "updatedAt")
+      VALUES (${randomUUID()}, ${id}, 'credential', ${id}, ${hash}, NOW(), NOW())`);
+    try { await db.execute(sql`INSERT INTO events (user_id, name, props) VALUES (${id}, 'phone_signup', ${JSON.stringify({})})`); } catch {}
+    return c.json({ ok: true });
+  } catch (e: any) {
+    return c.json({ error: 'could not create account' }, 500);
+  }
+});
+
 // Set a login password on the current (phone-verified) account.
 // The OTP verify step signs the user in but creates no password; this hashes
 // with Better Auth's own hasher and stores a credential account row, so
@@ -156,9 +187,9 @@ app.post('/api/phone/set-password', async c => {
   const password = String((b as any).password || '');
   if (password.length < 8) return c.json({ error: 'password must be 8+ characters' }, 400);
   try {
-    const r: any = await db.execute(sql`SELECT phone_number, phone_number_verified FROM "user" WHERE id=${u.id}`);
+    const r: any = await db.execute(sql`SELECT "phoneNumber", "phoneNumberVerified" FROM "user" WHERE id=${u.id}`);
     const row = r.rows?.[0];
-    if (!row?.phone_number) return c.json({ error: 'no phone number on this account' }, 400);
+    if (!row?.phoneNumber) return c.json({ error: 'no phone number on this account' }, 400);
     const ctx: any = await (auth as any).$context;
     const hash = await ctx.password.hash(password);
     const { randomUUID } = await import('node:crypto');

@@ -81,11 +81,9 @@ export const api = {
     req('/api/auth/sign-in/email', { method: 'POST', body: JSON.stringify({ email, password }) }),
   signOut: () => req('/api/auth/sign-out', { method: 'POST', body: JSON.stringify({}) }),
   session: () => req('/api/auth/get-session', { method: 'GET' }).catch(() => null),
-  // Phone login (Termii SMS code) + email password reset (Resend link)
-  phoneSendOtp: (phoneNumber: string) =>
-    req('/api/auth/phone-number/send-otp', { method: 'POST', body: JSON.stringify({ phoneNumber }) }),
-  phoneVerify: (phoneNumber: string, code: string, extra: Record<string, any> = {}) =>
-    req('/api/auth/phone-number/verify', { method: 'POST', body: JSON.stringify({ phoneNumber, code, ...extra }) }),
+  // Phone login (number + password, no SMS needed) + email password reset (Resend link)
+  phoneSignUp: (phoneNumber: string, password: string, name?: string) =>
+    req('/api/phone/signup', { method: 'POST', body: JSON.stringify({ phoneNumber, password, name }) }),
   phoneSignIn: (phoneNumber: string, password: string) =>
     req('/api/auth/sign-in/phone-number', { method: 'POST', body: JSON.stringify({ phoneNumber, password }) }),
   phoneSetPassword: (password: string) =>
