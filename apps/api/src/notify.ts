@@ -45,8 +45,10 @@ async function postJson(url: string, body: Record<string, any>, headers: Record<
 export async function sendTermiiSms(to: string, message: string): Promise<void> {
   const apiKey = (process.env.TERMII_API_KEY || '').trim();
   if (!apiKey) throw new Error('SMS not configured yet');
+  // Termii expects digits without '+': 234803... (their docs format).
+  const recipient = String(to || '').replace(/^\+/, '');
   const data = await postJson('https://api.ng.termii.com/api/sms/send', {
-    to,
+    to: recipient,
     from: (process.env.TERMII_SENDER || 'Uplift').trim() || 'Uplift',
     sms: message,
     type: 'plain',
